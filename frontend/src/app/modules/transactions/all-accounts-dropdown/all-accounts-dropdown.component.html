@@ -1,0 +1,46 @@
+<div class="w-full relative box-border" style="background-color: white;">
+  <button type="button" (click)="openSelectList()" class="dropdown w-full cursor-pointer py-1.5 pl-2 pr-10 text-left">
+    <div class="flex items-center">
+      <span class="change__text font-normal ml-3 block">{{value}}</span>
+      <span class="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
+        <img *ngIf="!isSelectListOpen" src="../../../../assets/images/icons/down.svg" alt="">
+        <img *ngIf="isSelectListOpen" src="../../../../assets/images/icons/up.svg" alt="">
+      </span>
+    </div>
+  </button>
+  <div class="items mt-2 w-full overflow-auto absolute z-10 right-0" *ngIf="isSelectListOpen">
+    <div class="w-full">
+      <div class="cursor-pointer select-none flex" (click)="updateList(undefined)">
+        <div class="flex items-center m-4 w-full" [ngClass]="keyEqual('All accounts') ? 'selected' : ''">
+          <div>
+            <span [ngClass]="keyEqual('All accounts')  ?
+                'selected-company-name' : 'company-name'">
+              All accounts
+            </span>
+            <p class="company-invoices">
+              {{calculate(accountsInfo$|async)}} transactions
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="cursor-pointer select-none flex" *ngFor="let item of accountsInfo$ | async"
+        (click)="updateList(item)">
+        <div class="flex items-center m-4 w-full" [ngClass]="keyEqual(item) ? 'selected' : ''">
+          <div>
+            <img *ngIf="item.icon" class="inline-block w-10 h-10"
+              [src]="item.icon" />
+          </div>
+          <div>
+            <span [ngClass]="keyEqual(item)  ?
+                'selected-company-name' : 'company-name'">
+              {{getName(item)}}
+            </span>
+            <p class="company-invoices">
+              {{item.transactionsCount}} transactions
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

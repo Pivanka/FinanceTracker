@@ -1,0 +1,943 @@
+{
+	"CurrenciesOptions": {
+		"Currencies": [
+			{
+				"currency": "UAH",
+				"name": "Ukrainian Hryvnia",
+				"ISOnum": 980,
+				"symbol": "₴"
+			},
+			{
+				"currency": "USD",
+				"name": "United States Dollar",
+				"ISOnum": 840,
+				"symbol": "$"
+			},
+			{
+				"currency": "EUR",
+				"name": "Euro",
+				"ISOnum": 978,
+				"symbol": "€"
+			},
+			{
+				"currency": "GBP",
+				"name": "Pound Sterling",
+				"ISOnum": 826,
+				"symbol": "£"
+			},
+			{
+				"currency": "JPY",
+				"name": "Japanese Yen",
+				"ISOnum": 392,
+				"symbol": "¥"
+			},
+			{
+				"currency": "CHF",
+				"name": "Swiss Franc",
+				"ISOnum": 756,
+				"symbol": "Fr."
+			},
+			{
+				"currency": "CNY",
+				"name": "Chinese Yuan",
+				"ISOnum": 156,
+				"symbol": "CN¥"
+			},
+			{
+				"currency": "CAD",
+				"name": "Canadian Dollar",
+				"ISOnum": 124,
+				"symbol": "CA$"
+			},
+			{
+				"currency": "AED",
+				"name": "United Arab Emirates Dirham",
+				"ISOnum": 784,
+				"symbol": "د.إ."
+			},
+			{
+				"currency": "AFN",
+				"name": "Afghan Afghani",
+				"ISOnum": 971,
+				"symbol": "Af"
+			},
+			{
+				"currency": "ALL",
+				"name": "Albanian Lek",
+				"ISOnum": 8,
+				"symbol": "L"
+			},
+			{
+				"currency": "AMD",
+				"name": "Armenian Dram",
+				"ISOnum": 51,
+				"symbol": "֏"
+			},
+			{
+				"currency": "AOA",
+				"name": "Angolan Kwanza",
+				"ISOnum": 973,
+				"symbol": "Kz"
+			},
+			{
+				"currency": "ANG",
+				"name": "Netherlands Antillean Guilder",
+				"ISOnum": 532,
+				"symbol": "ƒ"
+			},
+			{
+				"currency": "AUD",
+				"name": "Australian Dollar",
+				"ISOnum": 36,
+				"symbol": "AU$"
+			},
+			{
+				"currency": "AZN",
+				"name": "Azerbaijani Manat",
+				"ISOnum": 944,
+				"symbol": "ман"
+			},
+			{
+				"currency": "ARS",
+				"name": "Argentine Peso",
+				"ISOnum": 32,
+				"symbol": "AR$"
+			},
+			{
+				"currency": "AWG",
+				"name": "Aruban Florin",
+				"ISOnum": 533,
+				"symbol": "ƒ"
+			},
+			{
+				"currency": "BAM",
+				"name": "Bosnia and Herzegovina Convertible Mark",
+				"ISOnum": 977,
+				"symbol": "KM"
+			},
+			{
+				"currency": "BBD",
+				"name": "Barbadian Dollar",
+				"ISOnum": 52,
+				"symbol": "BBD$"
+			},
+			{
+				"currency": "BDT",
+				"name": "Bangladeshi Taka",
+				"ISOnum": 50,
+				"symbol": "৳"
+			},
+			{
+				"currency": "BGN",
+				"name": "Bulgarian Lev",
+				"ISOnum": 975,
+				"symbol": "лв."
+			},
+			{
+				"currency": "BHD",
+				"name": "Bahraini Dinar",
+				"ISOnum": 48,
+				"symbol": "BD"
+			},
+			{
+				"currency": "BIF",
+				"name": "Burundian Franc",
+				"ISOnum": 108,
+				"symbol": "FBu"
+			},
+			{
+				"currency": "BMD",
+				"name": "Bermudian Dollar",
+				"ISOnum": 60,
+				"symbol": "$"
+			},
+			{
+				"currency": "BND",
+				"name": "Brunei Dollar",
+				"ISOnum": 96,
+				"symbol": "B$"
+			},
+			{
+				"currency": "BOB",
+				"name": "Bolivian Boliviano",
+				"ISOnum": 68,
+				"symbol": "Bs."
+			},
+			{
+				"currency": "BRL",
+				"name": "Brazilian Real",
+				"ISOnum": 986,
+				"symbol": "R$"
+			},
+			{
+				"currency": "BSD",
+				"name": "Bahamian Dollar",
+				"ISOnum": 44,
+				"symbol": "$"
+			},
+			{
+				"currency": "BTN",
+				"name": "Bhutanese Ngultrum",
+				"ISOnum": 64,
+				"symbol": "Nu."
+			},
+			{
+				"currency": "BWP",
+				"name": "Botswana Pula",
+				"ISOnum": 72,
+				"symbol": "P"
+			},
+			{
+				"currency": "BYN",
+				"name": "Belarusian Ruble",
+				"ISOnum": 933,
+				"symbol": "Br"
+			},
+			{
+				"currency": "BZD",
+				"name": "Belize Dollar",
+				"ISOnum": 84,
+				"symbol": "BZ$"
+			},
+			{
+				"currency": "CDF",
+				"name": "Congolese Franc",
+				"ISOnum": 976,
+				"symbol": "FC"
+			},
+			{
+				"currency": "CLP",
+				"name": "Chilean Peso",
+				"ISOnum": 152,
+				"symbol": "CL$"
+			},
+			{
+				"currency": "COP",
+				"name": "Colombian Peso",
+				"ISOnum": 170,
+				"symbol": "CO$"
+			},
+			{
+				"currency": "CRC",
+				"name": "Costa Rican Colon",
+				"ISOnum": 188,
+				"symbol": "₡"
+			},
+			{
+				"currency": "CUC",
+				"name": "Cuban convertible Peso",
+				"ISOnum": 931,
+				"symbol": "CUC$"
+			},
+			{
+				"currency": "CUP",
+				"name": "Cuban Peso",
+				"ISOnum": 192,
+				"symbol": "$MN"
+			},
+			{
+				"currency": "CVE",
+				"name": "Cabo Verdean Escudo",
+				"ISOnum": 132,
+				"symbol": "CV$"
+			},
+			{
+				"currency": "CZK",
+				"name": "Czech Koruna",
+				"ISOnum": 203,
+				"symbol": "Kč"
+			},
+			{
+				"currency": "DJF",
+				"name": "Djiboutian Franc",
+				"ISOnum": 262,
+				"symbol": "Fdj"
+			},
+			{
+				"currency": "DKK",
+				"name": "Danish Krone",
+				"ISOnum": 208,
+				"symbol": "kr."
+			},
+			{
+				"currency": "DOP",
+				"name": "Dominican Peso",
+				"ISOnum": 214,
+				"symbol": "RD$"
+			},
+			{
+				"currency": "DZD",
+				"name": "Algerian Dinar",
+				"ISOnum": 12,
+				"symbol": "DA"
+			},
+			{
+				"currency": "EGP",
+				"name": "Egyptian Pound",
+				"ISOnum": 818,
+				"symbol": "E£"
+			},
+			{
+				"currency":"ERN",
+				"name": "Eritrean Nakfa",
+				"ISOnum": 232,
+				"symbol": "Nkf"
+			},
+			{
+				"currency": "ETB",
+				"name": "Ethiopian Birr",
+				"ISOnum": 230,
+				"symbol": "Br"
+			},
+			{
+				"currency": "FJD",
+				"name": "Fijian Dollar",
+				"ISOnum": 242,
+				"symbol": "FJ$"
+			},
+			{
+				"currency": "FKP",
+				"name": "Falkland Islands Pound",
+				"ISOnum": 238,
+				"symbol": "FK£"
+			},
+			{
+				"currency": "GEL",
+				"name": "Georgian Lari",
+				"ISOnum": 981,
+				"symbol": "₾"
+			},
+			{
+				"currency": "GHS",
+				"name": "Ghanaian Cedi",
+				"ISOnum": 936,
+				"symbol": "GH₵"
+			},
+			{
+				"currency":"GIP",
+				"name": "Gibraltar Pound",
+				"ISOnum": 292,
+				"symbol": "£"
+			},
+			{
+				"currency": "GMD",
+				"name": "Gambian Dalasi",
+				"ISOnum": 270,
+				"symbol": "D"
+			},
+			{
+				"currency": "GNF",
+				"name": "Guinean Franc",
+				"ISOnum": 324,
+				"symbol": "FG"
+			},
+			{
+				"currency": "GTQ",
+				"name": "Guatemalan Quetzal",
+				"ISOnum": 320,
+				"symbol": "Q"
+			},
+			{
+				"currency": "GYD",
+				"name": "Guyanese Dollar",
+				"ISOnum": 328,
+				"symbol": "G$"
+			},
+			{
+				"currency": "HKD",
+				"name": "Hong Kong Dollar",
+				"ISOnum": 344,
+				"symbol": "HK$"
+			},
+			{
+				"currency": "HNL",
+				"name": "Honduran Lempira",
+				"ISOnum": 340,
+				"symbol": "L"
+			},
+			{
+				"currency": "HRK",
+				"name": "Croatian Kuna",
+				"ISOnum": 191,
+				"symbol": "kn"
+			},
+			{
+				"currency": "HTG",
+				"name": "Haitian Gourde",
+				"ISOnum": 332,
+				"symbol": "G"
+			},
+			{
+				"currency": "HUF",
+				"name": "Hungarian Forint",
+				"ISOnum": 348,
+				"symbol": "Ft"
+			},
+			{
+				"currency": "IDR",
+				"name": "Indonesian Rupiah",
+				"ISOnum": 360,
+				"symbol": "Rp"
+			},
+			{
+				"currency": "ILS",
+				"name": "Israeli new Shekel",
+				"ISOnum": 376,
+				"symbol": "₪"
+			},
+			{
+				"currency": "INR",
+				"name": "Indian Rupee",
+				"ISOnum": 356,
+				"symbol": "Rs."
+			},
+			{
+				"currency": "IQD",
+				"name": "Iraqi Dinar",
+				"ISOnum": 368,
+				"symbol": "د.ع."
+			},
+			{
+				"currency": "IRR",
+				"name": "Iranian Rial",
+				"ISOnum": 364,
+				"symbol": "﷼"
+			},
+			{
+				"currency": "ISK",
+				"name": "Icelandic Krona",
+				"ISOnum": 352,
+				"symbol": "kr"
+			},
+			{
+				"currency": "JMD",
+				"name": "Jamaican Dollar",
+				"ISOnum": 388,
+				"symbol": "J$"
+			},
+			{
+				"currency": "JOD",
+				"name": "Jordanian Dinar",
+				"ISOnum": 400,
+				"symbol": "JD"
+			},
+			{
+				"currency": "KES",
+				"name": "Kenyan Shilling",
+				"ISOnum": 404,
+				"symbol": "KSh"
+			},
+			{
+				"currency": "KGS",
+				"name": "Kyrgyzstani Som",
+				"ISOnum": 417,
+				"symbol": "с"
+			},
+			{
+				"currency": "KHR",
+				"name": "Cambodian Riel",
+				"ISOnum": 116,
+				"symbol": "៛"
+			},
+			{
+				"currency": "KMF",
+				"name": "Comorian Franc",
+				"ISOnum": 174,
+				"symbol": "CF"
+			},
+			{
+				"currency": "KPW",
+				"name": "North Korean Won",
+				"ISOnum": 408,
+				"symbol": "₩"
+			},
+			{
+				"currency": "KWD",
+				"name": "South Korean Won",
+				"ISOnum": 410,
+				"symbol": "₩"
+			},
+			{
+				"currency": "KWD",
+				"name": "Kuwaiti Dinar",
+				"ISOnum": 414,
+				"symbol": "KD"
+			},
+			{
+				"currency": "KYD",
+				"name": "Cayman Islands Dollar",
+				"ISOnum": 136,
+				"symbol": "CI$"
+			},
+			{
+				"currency": "KZT",
+				"name": "Kazakhstani Tenge",
+				"ISOnum": 398,
+				"symbol": "₸"
+			},
+			{
+				"currency": "LAK",
+				"name": "Lao Kip",
+				"ISOnum": 418,
+				"symbol": "₭N"
+			},
+			{
+				"currency": "LBP",
+				"name": "Lebanese Pound",
+				"ISOnum": 422,
+				"symbol": "LL."
+			},
+			{
+				"currency": "LKR",
+				"name": "Sri Lankan Rupee",
+				"ISOnum": 144,
+				"symbol": "Rs."
+			},
+			{
+				"currency": "LRD",
+				"name": "Liberian Dollar",
+				"ISOnum": 430,
+				"symbol": "L$"
+			},
+			{
+				"currency": "LSL",
+				"name": "Lesotho Loti",
+				"ISOnum": 426,
+				"symbol": "L"
+			},
+			{
+				"currency": "LYD",
+				"name": "Libyan Dinar",
+				"ISOnum": 434,
+				"symbol": "LD"
+			},
+			{
+				"currency": "MAD",
+				"name": "Moroccan Dirham",
+				"ISOnum": 504,
+				"symbol": "DH"
+			},
+			{
+				"currency": "MDL",
+				"name": "Moldovan Leu",
+				"ISOnum": 498,
+				"symbol": "L"
+			},
+			{
+				"currency": "MGA",
+				"name": "Malagasy Ariary",
+				"ISOnum": 969,
+				"symbol": "Ar"
+			},
+			{
+				"currency": "MKD",
+				"name": "Macedonian Denar",
+				"ISOnum": 807,
+				"symbol": "den"
+			},
+			{
+				"currency": "MMK",
+				"name": "Myanmar Kyat",
+				"ISOnum": 104,
+				"symbol": "Ks"
+			},
+			{
+				"currency": "MNT",
+				"name": "Mongolian Tögrög",
+				"ISOnum": 496,
+				"symbol": "₮"
+			},
+			{
+				"currency": "MOP",
+				"name": "Macanese Pataca",
+				"ISOnum": 446,
+				"symbol": "MOP$"
+			},
+			{
+				"currency": "MRU",
+				"name": "Mauritanian Ouguiya",
+				"ISOnum": 929,
+				"symbol": "UM"
+			},
+			{
+				"currency": "MUR",
+				"name": "Mauritian Rupee",
+				"ISOnum": 480,
+				"symbol": "Rs."
+			},
+			{
+				"currency": "MVR",
+				"name": "Maldivian Rufiyaa",
+				"ISOnum": 462,
+				"symbol": "MRf"
+			},
+			{
+				"currency": "MWK",
+				"name": "Malawian Kwacha",
+				"ISOnum": 454,
+				"symbol": "MK"
+			},
+			{
+				"currency": "MXN",
+				"name": "Mexican Peso",
+				"ISOnum": 484,
+				"symbol": "MX$"
+			},
+			{
+				"currency": "MYR",
+				"name": "Malaysian Ringgit",
+				"ISOnum": 458,
+				"symbol": "RM"
+			},
+			{
+				"currency": "MZN",
+				"name": "Mozambican Metical",
+				"ISOnum": 943,
+				"symbol": "MTn"
+			},
+			{
+				"currency": "NAD",
+				"name": "Namibian Dollar",
+				"ISOnum": 516,
+				"symbol": "N$"
+			},
+			{
+				"currency": "NGN",
+				"name": "Nigerian Naira",
+				"ISOnum": 566,
+				"symbol": "₦"
+			},
+			{
+				"currency": "NIO",
+				"name": "Nicaraguan Córdoba",
+				"ISOnum": 558,
+				"symbol": "C$"
+			},
+			{
+				"currency": "NOK",
+				"name": "Norwegian Krone",
+				"ISOnum": 578,
+				"symbol": "kr"
+			},
+			{
+				"currency": "NPR",
+				"name": "Nepalese Rupee",
+				"ISOnum": 524,
+				"symbol": "Rs."
+			},
+			{
+				"currency": "NZD",
+				"name": "New Zealand Dollar",
+				"ISOnum": 554,
+				"symbol": "NZ$"
+			},
+			{
+				"currency": "OMR",
+				"name": "Omani Rial",
+				"ISOnum": 512,
+				"symbol": "OR"
+			},
+			{
+				"currency": "PAB",
+				"name": "Panamanian Balboa",
+				"ISOnum": 590,
+				"symbol": "B/."
+			},
+			{
+				"currency": "PEN",
+				"name": "Peruvian Sol",
+				"ISOnum": 604,
+				"symbol": "S/."
+			},
+			{
+				"currency": "PGK",
+				"name": "Papua New Guinean Kina",
+				"ISOnum": 598,
+				"symbol": "K"
+			},
+			{
+				"currency": "PHP",
+				"name": "Philippine Peso",
+				"ISOnum": 608,
+				"symbol": "₱"
+			},
+			{
+				"currency": "PKR",
+				"name": "Pakistani Rupee",
+				"ISOnum": 586,
+				"symbol": "Rs."
+			},
+			{
+				"currency": "PLN",
+				"name": "Polish Zloty",
+				"ISOnum": 985,
+				"symbol": "zł"
+			},
+			{
+				"currency": "PYG",
+				"name": "Paraguayan Guaraní",
+				"ISOnum": 600,
+				"symbol": "₲"
+			},
+			{
+				"currency": "QAR",
+				"name": "Qatari Riyal",
+				"ISOnum": 634,
+				"symbol": "QR"
+			},
+			{
+				"currency": "RON",
+				"name": "Romanian Leu",
+				"ISOnum": 946,
+				"symbol": "L"
+			},
+			{
+				"currency": "RSD",
+				"name": "Serbian Dinar",
+				"ISOnum": 941,
+				"symbol": "din"
+			},
+			{
+				"currency": "RWF",
+				"name": "Rwandan Franc",
+				"ISOnum": 646,
+				"symbol": "FRw"
+			},
+			{
+				"currency": "SAR",
+				"name": "Saudi Riyal",
+				"ISOnum": 682,
+				"symbol": "SR"
+			},
+			{
+				"currency": "SBD",
+				"name": "Solomon Islands Dollar",
+				"ISOnum": 90,
+				"symbol": "SI$"
+			},
+			{
+				"currency": "SCR",
+				"name": "Seychellois Rupee",
+				"ISOnum": 690,
+				"symbol": "Rs."
+			},
+			{
+				"currency": "SDG",
+				"name": "Sudanese Pound",
+				"ISOnum": 938,
+				"symbol": "£SD"
+			},
+			{
+				"currency": "SEK",
+				"name": "Swedish Krona",
+				"ISOnum": 752,
+				"symbol": "kr"
+			},
+			{
+				"currency": "SGD",
+				"name": "Singapore Dollar",
+				"ISOnum": 702,
+				"symbol": "S$"
+			},
+			{
+				"currency": "SHP",
+				"name": "Saint Helena Pound",
+				"ISOnum": 654,
+				"symbol": "£"
+			},
+			{
+				"currency": "SLL",
+				"name": "Sierra Leonean Leone",
+				"ISOnum": 694,
+				"symbol": "Le"
+			},
+			{
+				"currency": "SOS",
+				"name": "Somali Shilling",
+				"ISOnum": 706,
+				"symbol": "Sh.So."
+			},
+			{
+				"currency": "SRD",
+				"name": "Surinamese Dollar",
+				"ISOnum": 968,
+				"symbol": "Sr$"
+			},
+			{
+				"currency": "SSP",
+				"name": "South Sudanese Pound",
+				"ISOnum": 728,
+				"symbol": "SS£"
+			},
+			{
+				"currency": "STN",
+				"name": "Sao Tome and Príncipe Dobra",
+				"ISOnum": 930,
+				"symbol": "Db"
+			},
+			{
+				"currency": "SVC",
+				"name": "Salvadoran Colón",
+				"ISOnum": 222,
+				"symbol": "₡"
+			},
+			{
+				"currency": "SYP",
+				"name": "Syrian Pound",
+				"ISOnum": 760,
+				"symbol": "LS"
+			},
+			{
+				"currency": "SZL",
+				"name": "Swazi Lilangeni",
+				"ISOnum": 748,
+				"symbol": "L"
+			},
+			{
+				"currency": "THB",
+				"name": "Thai Baht",
+				"ISOnum": 764,
+				"symbol": "฿"
+			},
+			{
+				"currency": "TJS",
+				"name": "Tajikistani Somoni",
+				"ISOnum": 972,
+				"symbol": "SM"
+			},
+			{
+				"currency": "TMT",
+				"name": "Turkmenistan Manat",
+				"ISOnum": 934,
+				"symbol": "m."
+			},
+			{
+				"currency": "TND",
+				"name": "Tunisian Dinar",
+				"ISOnum": 788,
+				"symbol": "DT"
+			},
+			{
+				"currency": "TOP",
+				"name": "Tongan Paʻanga",
+				"ISOnum": 776,
+				"symbol": "T$"
+			},
+			{
+				"currency": "TRY",
+				"name": "Turkish Lira",
+				"ISOnum": 949,
+				"symbol": "TL"
+			},
+			{
+				"currency": "TTD",
+				"name": "Trinidad and Tobago Dollar",
+				"ISOnum": 780,
+				"symbol": "TT$"
+			},
+			{
+				"currency": "TWD",
+				"name": "New Taiwan Dollar",
+				"ISOnum": 901,
+				"symbol": "NT$"
+			},
+			{
+				"currency": "TZS",
+				"name": "Tanzanian Shilling",
+				"ISOnum": 834,
+				"symbol": "TSh"
+			},
+			{
+				"currency": "UGX",
+				"name": "Ugandan Shilling",
+				"ISOnum": 800,
+				"symbol": "USh"
+			},
+			{
+				"currency": "UYU",
+				"name": "Uruguayan Peso",
+				"ISOnum": 858,
+				"symbol": "$U"
+			},
+			{
+				"currency": "UZS",
+				"name": "Uzbekistani Som",
+				"ISOnum": 860,
+				"symbol": "сум"
+			},
+			{
+				"currency": "VES",
+				"name": "Venezuelan Bolívar Soberano",
+				"ISOnum": 928,
+				"symbol": "Bs.F"
+			},
+			{
+				"currency": "VND",
+				"name": "Vietnamese Dong",
+				"ISOnum": 704,
+				"symbol": "₫"
+			},
+			{
+				"currency": "VUV",
+				"name": "Vanuatu Vatu",
+				"ISOnum": 548,
+				"symbol": "VT"
+			},
+			{
+				"currency": "WST",
+				"name": "Samoan Tala",
+				"ISOnum": 882,
+				"symbol": "T"
+			},
+			{
+				"currency": "XAF",
+				"name": "Central African CFA Franc BEAC",
+				"ISOnum": 950,
+				"symbol": "Fr"
+			},
+			{
+				"currency": "XCD",
+				"name": "East Caribbean Dollar",
+				"ISOnum": 951,
+				"symbol": "$"
+			},
+			{
+				"currency": "XOF",
+				"name": "West African CFA Franc BCEAO",
+				"ISOnum": 952,
+				"symbol": "₣"
+			},
+			{
+				"currency": "XPF",
+				"name": "CFP Franc (Franc Pacifique)",
+				"ISOnum": 953,
+				"symbol": "₣"
+			},
+			{
+				"currency": "YER",
+				"name": "Yemeni Rial",
+				"ISOnum": 886,
+				"symbol": "YR"
+			},
+			{
+				"currency": "ZAR",
+				"name": "South African Rand",
+				"ISOnum": 710,
+				"symbol": "R"
+			},
+			{
+				"currency": "ZMW",
+				"name": "Zambian Kwacha",
+				"ISOnum": 967,
+				"symbol": "ZK"
+			},
+			{
+				"currency": "ZWL",
+				"name": "Zimbabwean Dollar",
+				"ISOnum": 932,
+				"symbol": "Z$"
+			}
+		]
+	}
+
+}

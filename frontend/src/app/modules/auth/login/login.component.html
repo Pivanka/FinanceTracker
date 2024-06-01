@@ -1,0 +1,39 @@
+<div class="container w-full flex justify-center">
+  <div class="login-page">
+    <app-about-us></app-about-us>
+
+    <div class="flex justify-center items-center h-full login-container" [style.display]="!(loading$ | async) ? 'none' : 'flex'">
+      <app-spinner class="loading-container flex-content-center"></app-spinner>
+    </div>
+
+    <div class="login-container" [style.display]="(loading$ | async) ? 'none' : 'flex'">
+      <form [formGroup]="loginForm" (ngSubmit)="submit()">
+        <div class="login-form">
+            <h1 class = "mb-2">Log in</h1>
+            <app-input class="mt-4" [label]="'E-mail'" placeholder="example@companyname.com" [control]="email"></app-input>
+            <div *ngIf="email.hasError('required') && email.touched" class="error-message w-full help-text" >
+                required
+            </div>
+            <ng-container *ngIf="(errors$ | async) as serverErrors">
+              <app-generic-error-message *ngIf="loginForm?.valid && serverErrors['Email']" [message]="serverErrors['Email'][0]"></app-generic-error-message>
+           </ng-container>
+
+            <app-input class="mt-4" [label]="'Password'" [type]="'password'" placeholder="Password" [control]="password"></app-input>
+            <div *ngIf="password.hasError('required') && password.touched" class="error-message w-full help-text" >
+                required
+            </div>
+            <ng-container *ngIf="(errors$ | async) as serverErrors">
+              <app-generic-error-message *ngIf="loginForm?.valid && serverErrors['Password']" [message]="serverErrors['Password'][0]"></app-generic-error-message>
+           </ng-container>
+
+            <app-button class="w-full my-8" [config]="submitCfg"></app-button>
+            <div class="register">
+                Don’t have an account?
+                <span>&nbsp;</span>
+                <a class="register-link" [routerLink]="'/register'">Register</a>
+            </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

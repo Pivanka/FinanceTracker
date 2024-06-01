@@ -1,0 +1,20 @@
+<div class="profile-container" *ngIf="(profile$ | async) as vm">
+  <div class="flex flex-row justify-between">
+
+    <div class="flex flex-row">
+      <div class="preview mr-4">
+        <div [style.background-image]='selectImage(vm.avatar!)'> </div>
+      </div>
+      <div class="flex flex-col">
+        <h2 class="person-name">{{vm.firstName}} {{vm.lastName}}</h2>
+        <span class="person-email">{{vm.email}}</span>
+      </div>
+    </div>
+
+    <button class="flex flex-wrap items-center" (click)="openModal(vm)">
+      <img src="../../../../../assets/images/icons/edit.svg" alt="edit">
+      <span class="additional-info ml-1">Edit</span>
+    </button>
+
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div>
+  <div class="flex flex-row justify-between py-1.5">
+    <div class="flex">
+      <div class="showing font-normal">{{showing}}</div>
+    </div>
+    <div class="flex">
+      <a class="page shevron-left mr-1.5" (click)="this.currentPage > 1 && onPage(this.currentPage - 1)"
+        [ngClass]="this.currentPage > 1 ? 'shevron-active' : 'shevron-disabled'"></a>
+
+      <a class="page mr-2.5" *ngFor="let i of list" [ngClass]="isActive(i) ? 'active' : ''" (click)="onPage(i)">
+        {{ i }}
+      </a>
+
+      <a class="page shevron-right ml-1.5"
+        (click)="this.currentPage < this.totalPageCount() && onPage(this.currentPage + 1)"
+        [ngClass]="this.currentPage < this.totalPageCount() ? 'shevron-active' : 'shevron-disabled'"></a>
+    </div>
+
+  </div>
+</div>

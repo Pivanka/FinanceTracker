@@ -1,0 +1,20 @@
+<div class="navbar">
+  <div class="flex flex-row flex-wrap justify-between w-full">
+    <div class="nav-tabs">
+      <div *ngFor="let tab of tabs"
+           (click)="selectTab(tab)"
+           [class.active]="tab.active"
+           class="tab"
+           [routerLink]="tab.link">
+        <span class="title">{{tab.title}}</span>
+        <span *ngIf="tab.count || tab.count == 0" class="counter">{{tab.count}}</span>
+      </div>
+    </div>
+  </div>
+
+  <ng-content></ng-content>
+</div>
+
+<div class="pane w-full p-6 flex w-full" [style.height]="height">
+  <router-outlet></router-outlet>
+</div>

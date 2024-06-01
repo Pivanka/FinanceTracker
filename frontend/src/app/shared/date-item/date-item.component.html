@@ -1,0 +1,7 @@
+<div class="flex flex-row items-center p-4 payment-method justify-between" *ngIf="model != undefined">
+  <div class="flex flex-col">
+    <span class="main-info">{{ model.title }}</span>
+    <span *ngIf="model.from && model.to"
+      class="text-[#898E96] text-xs font-normal">{{ model.from | date }} - {{ model.to | date }}</span>
+  </div>
+</div>

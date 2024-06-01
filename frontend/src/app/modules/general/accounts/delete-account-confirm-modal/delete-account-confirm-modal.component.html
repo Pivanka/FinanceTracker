@@ -1,0 +1,10 @@
+<app-modal-container class="px-6" maxWidth="500px">
+  <app-modal-title [text]="data.title"></app-modal-title>
+  <div class="text-grey-2 pt-4 pb-8">
+    After deleting account, you can see the account's transactions on reports and transaction page.
+  </div>
+  <div class="pt-4 px-6 flex justify-center gap-4">
+    <app-button variant="decline" [config]="data.declineButton" class="flex-1"></app-button>
+    <app-button [config]="data.primaryButton" class="flex-1"></app-button>
+  </div>
+</app-modal-container>

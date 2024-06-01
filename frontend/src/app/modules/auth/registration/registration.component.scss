@@ -1,0 +1,38 @@
+.registration-page{
+  display: flex;
+  height: 100%;
+  background-color: white;
+  app-about-us{
+      flex: 1 1 580px;
+  }
+  .outlet-container{
+      flex: 1 1 786px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+  }
+}
+.password-tips{
+  padding-left: 1.5rem;
+  font-size: 14px;
+  display: block;
+  list-style: disc;
+  color:rgba(100, 198, 141, 1);
+}
+.login-suggestion{
+  margin: 2rem 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  color:rgba(69, 73, 80, 1);
+  a{
+      color:rgba(32, 33, 35, 1);
+      font-weight: bold;
+      text-decoration: underline;
+      margin-left: 1rem;
+  }
+}
+.next-button{
+    margin: 1rem 0;
+    width: 100%;
+}

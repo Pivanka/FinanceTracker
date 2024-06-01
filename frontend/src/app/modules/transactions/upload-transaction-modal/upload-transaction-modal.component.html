@@ -1,0 +1,23 @@
+<app-modal-container class="px-6" [minWidth]="'588px'">
+  <app-modal-title text="Upload transactions"></app-modal-title>
+  <div class="flex flex-row justify-between w-full">
+    <div class="cursor-pointer">
+      <a class="ml-6 text-grey-3" (click)="uploadPhoto.click()">Upload file</a>
+      <input type="file" #uploadPhoto [hidden]="true" (change)="onFileChange($event)" accept="csv">
+    </div>
+
+    <div class="flex flex-row cursor-pointer" (click)="remove()" *ngIf="form.controls.file.value">
+      <img src="assets/images/icons/delete_icon.svg" alt="delete">
+      <span class="additional-info ml-3">Remove file</span>
+    </div>
+  </div>
+  <app-modal-actions-container>
+    <app-button
+      type="submit"
+      [disabled]="!form.valid"
+      text="Upload"
+      [classList]="['w-[155px]']"
+      (onClick)="onSubmit()">
+    </app-button>
+  </app-modal-actions-container>
+</app-modal-container>

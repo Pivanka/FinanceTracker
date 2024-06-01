@@ -1,0 +1,36 @@
+<div class="dropdown block relative w-full" (mouseleave)="closeSelectList()">
+
+  <button class="flex flex-row dropdown-button w-full justify-end" (click)="openSelectList()">
+
+    <span class="help-text mr-3">
+        <ng-container
+          *ngIf="headerTemplateRef"
+          [ngTemplateOutlet]="headerTemplateRef"
+          [ngTemplateOutletContext]="{$implicit:this.items[this.selectedItem]}">
+        </ng-container>
+    </span>
+
+    <img *ngIf="!isListOpen" src="assets/images/icons/list_down.svg" alt="">
+    <img *ngIf="isListOpen" src="assets/images/icons/list_up.svg" alt="">
+  </button>
+
+  <div class="dropdown-menu absolute pt-2.5 z-50" [ngClass]="isListOpen ? '' : 'hidden block'" [style.width]="width ? width : '100%'">
+
+    <ul class="px-4 py-6" [ngStyle]="{'background': this.menuColor}" >
+      <li class="dropdown-item mb-6 last:mb-0 cursor-pointer" *ngFor="let item of items; let i = index" (click)="select(i)">
+
+        <div class="flex flex-row items-center" [ngClass]="selectedItem == i ? 'item-selected' : ''">
+          <div class="small-circle hidden"></div>
+
+          <ng-container
+            *ngIf="bodyTemplateRef"
+            [ngTemplateOutlet]="bodyTemplateRef"
+            [ngTemplateOutletContext]="{$implicit:item}">
+          </ng-container>
+
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</div>

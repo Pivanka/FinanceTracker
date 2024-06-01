@@ -1,0 +1,32 @@
+<div class="rounded-xl p-8 bg-white"  *ngIf="(balance$ | async) as balance; else loading">
+  <h3 class="block mb-8">Balance {{currentMonth | date: 'MMMM'}}</h3>
+  <div class="flex flex-row actions flex-wrap justify-between">
+
+    <div  class="flex flex-row grow justify-between">
+      <div class="flex flex-row items-center">
+        <img class="mr-4" src="/assets/images/icons/incomes.svg" alt="Income">
+        <div>
+          <span>Incomes</span>
+          <p class="help-text">{{balance.incomes}} {{balance.currency}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-row grow justify-between">
+      <div class="flex flex-row items-center">
+        <img class="mr-4" src="/assets/images/icons/expenses.svg" alt="Expense">
+        <div>
+          <span>Expences</span>
+          <p class="help-text">{{balance.expenses}} {{balance.currency}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="rounded-xl p-8 bg-white mt-3">
+    <app-placeholder [lines]="3" [baseInterval]="0" [flexOption]="'row'"></app-placeholder>
+  </div>
+</ng-template>

@@ -1,0 +1,45 @@
+<app-modal-container class="md:wide-container px-6">
+
+  <div class="wide-container">
+    <h2 class="mb-8">Notifications</h2>
+
+    <app-search-input [color]="'#F2F4F8'" (onSubmit)="newSearch($event)"
+                      [liveSearch]="true"></app-search-input>
+
+    <div class="mt-4 flex justify-end">
+      <app-sort-dropdown [width]="'208px'" [items]="items" (onSelect)="applySort($event)" [closeAfterSelecting]="true">
+        <ng-template let-header #header><span class="info">{{header.title}}</span></ng-template>
+        <ng-template let-rowDetail #body>{{rowDetail.title}}</ng-template>
+      </app-sort-dropdown>
+    </div>
+
+    <div class="sm:notifications-container-flex" *ngIf="!(notificationsLoading$ | async) && (notifications$ | async) as vm"
+         [ngClass]="!vm.items.length ? 'notifications-container-flex' : ''">
+
+      <div class="notifications w-full mt-8 py-1" *ngIf="vm.items.length">
+        <div *ngFor="let item of vm.items">
+          <app-notification-item [notification]="item" class="cursor-pointer" (click)="openNotificationModal(item)"></app-notification-item>
+        </div>
+      </div>
+
+      <div class="notifications container-middle" *ngIf="!vm.items.length">
+        <app-empty-state [message]="'No notifications found'"></app-empty-state>
+      </div>
+    </div>
+
+    <div *ngIf="(notificationsLoading$ | async)">
+      <div class="transactions w-full mt-8">
+        <app-placeholder [lines]="4" [skipLargeLine]="true" ></app-placeholder>
+      </div>
+    </div>
+
+    <div class="mt-8 mx-auto" *ngIf="(notifications$ | async) as vm;">
+      <app-pagination *ngIf="vm.totalPages > 1" [totalCount]="vm.totalCount" [pageSize]="take" [currentPage]="vm.pageNumber"
+                      (onPageChange)="toPage($event)"></app-pagination>
+    </div>
+
+  </div>
+
+</app-modal-container>
+
+

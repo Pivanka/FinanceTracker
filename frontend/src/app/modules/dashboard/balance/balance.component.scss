@@ -1,0 +1,18 @@
+.actions {
+  font-weight: 500;
+}
+
+@media (min-width: 768px){
+  .actions > div:not(:last-child){
+    padding-right: 2rem;
+    border-right: 1px solid #E5E8EC;
+  }
+
+  .actions > div:not(:first-child){
+    padding-left: 2rem;
+  }
+}
+
+.help-text{
+  color: #454950;
+}

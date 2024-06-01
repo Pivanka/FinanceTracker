@@ -1,0 +1,26 @@
+<div class="rounded-xl p-8 bg-white transactions-container sm:transaction-container-flex"
+     *ngIf="(transactions$ | async) as transactions; else loading"
+     [ngClass]="!transactions.items.length ? 'transactions-container-flex' : ''">
+    <h3 class="container-left">All Transactions</h3>
+
+    <div class="transactions w-full mt-7 py-1" *ngIf="transactions.items.length">
+      <div *ngFor="let item of transactions.items">
+        <app-transaction-item [transaction]="item"></app-transaction-item>
+      </div>
+    </div>
+
+    <p class="text-center mt-7 cursor-pointer" *ngIf="transactions.totalCount">
+      <a (click)="viewAll()">View all ({{transactions.totalCount}})</a>
+    </p>
+
+    <div class="container-middle" *ngIf="!transactions.items.length">
+      <app-empty-state [message]="'No transactions yet'"></app-empty-state>
+    </div>
+
+</div>
+
+<ng-template #loading>
+  <div class="rounded-xl p-8 bg-white transactions-container">
+    <app-placeholder [lines]="4"></app-placeholder>
+  </div>
+</ng-template>

@@ -1,0 +1,18 @@
+:host{
+  flex: 1;
+}
+
+.members-container{
+  height: calc(428px - 32px);
+}
+
+.container-middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.spinner-container{
+  z-index: 9999;
+}

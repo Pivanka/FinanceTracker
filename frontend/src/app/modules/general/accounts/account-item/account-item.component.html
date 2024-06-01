@@ -1,0 +1,32 @@
+<div class="flex flex-row items-center p-4 account-item justify-between" *ngIf="model != undefined">
+  <div class="flex flex-row">
+    <img [src]="model.icon === null ? getIcon() : model.icon" alt="icon" class="mr-4 account-icon">
+
+    <div class="flex flex-col">
+      <span class="main-info">{{ model.title }}</span>
+      <span class="additional-info">{{ model.currency }}</span>
+    </div>
+  </div>
+  <div *ngIf="!(hasNoAccess$ | async)" class="flex justify-end">
+    <div>
+        <button mat-button  #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu" class="dropdown-menu menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+    </div>
+  </div>
+</div>
+
+<mat-menu #menu="matMenu" class="menu-content">
+  <button *ngIf="hasUpdatingAccess$ | async" mat-menu-item (click)="openEditModal()">
+    <div class="flex items-center">
+      <img class="menu-item-icon" src="assets/images/icons/edit.svg" alt="edit">
+      <span class="additional-info ml-1">Edit</span>
+    </div>
+  </button>
+  <button *ngIf="hasDeletingAccess$ | async" mat-menu-item (click)="onDeleteClick()">
+    <div class="flex items-center">
+      <img class="menu-item-icon" src="assets/images/icons/grey_delete.svg" alt="delete" />
+      <span class="additional-info ml-1">Delete</span>
+    </div>
+  </button>
+</mat-menu>

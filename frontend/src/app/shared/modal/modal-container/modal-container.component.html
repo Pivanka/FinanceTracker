@@ -1,0 +1,13 @@
+<div
+  class="modal-container px-12 py-6"
+  [style.maxWidth]="maxWidth"
+  [style.minWidth]="minWidth"
+  [style.maxHeight]="maxHeight"
+  [style.minHeight]="minHeight">
+  <div class="close-modal-button py-6" (click)="close()" *ngIf="showClose">
+    <img class="cursor-pointer" src="assets/images/icons/close.svg" alt="" />
+  </div>
+  <div class="modal-content">
+    <ng-content></ng-content>
+  </div>
+</div>

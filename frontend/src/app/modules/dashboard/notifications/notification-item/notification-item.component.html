@@ -1,0 +1,11 @@
+<div class="flex flex-row items-center" *ngIf="notification">
+  <img [src]="getIconByOperation()" class="icon mr-7" alt="icon" width="48" height="48">
+
+  <div class="transaction-with-date">
+    <div class="flex flex-row items-center">
+      <span class="font-medium notification-text" [innerHTML]="notification.message"></span>
+      <img *ngIf="!notification.isRead" class="pl-1" src="assets/images/icons/circle.svg" alt="">
+    </div>
+    <span class="leading-[20px] text-[#AFB4BD]">{{notification.createdDate| date:'mediumDate'}}</span>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="modal-success-container mb-8 mx-6">
+  <app-modal-title [text]="title" padding-top="1.5em"></app-modal-title>
+  <div class="modal-success-icon"><img src="assets/images/icons/success.svg" alt="" *ngIf="successful"></div>
+  <div class="modal-success-icon"><img src="assets/images/icons/failure.svg" alt="" *ngIf="!successful"></div>
+  <div mat-dialog-content class="mt-4 text-grey-2">
+      <p>{{text}}</p>
+  </div>
+</div>

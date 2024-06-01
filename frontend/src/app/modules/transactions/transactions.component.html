@@ -1,0 +1,13 @@
+<app-header [title]="'Transactions'" [icon]="'assets/images/icons/transactions.svg'" [primaryButton]="primaryButton"
+  [secondaryButton]="secondaryButton">
+</app-header>
+
+<app-tabs [showSearch]="true">
+  <app-tab title="All" [count]="(counters$ | async)?.allTransactionsCount || 0" link="all"></app-tab>
+  <app-tab title="Incomes" [count]="(counters$ | async)?.incomeTransactionsCount || 0" link="incomes"></app-tab>
+  <app-tab title="Expenses" [count]="(counters$ | async)?.expenseTransactionsCount || 0" link="expenses"></app-tab>
+
+  <app-search-input [placeholder]="'Look for a Transaction'" (onSubmit)="newSearch($event)" [style.width]="'340px'"
+    [liveSearch]="true"></app-search-input>
+
+</app-tabs>

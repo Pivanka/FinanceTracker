@@ -1,0 +1,84 @@
+.navbar{
+  display: flex;
+}
+
+.nav-tabs {
+  display: flex;
+  list-style: none;
+  background: #F9FAFB;
+  width: max-content;
+  border-radius: 12px 12px 0 0;
+}
+
+.tab {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 2rem 1rem 2rem;
+  gap: 0 0.5rem;
+  border-radius: 12px 12px 0 0;
+  cursor:pointer;
+}
+
+.title{
+  text-align: center;
+}
+
+.counter {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 1rem;
+  background-color: white;
+  flex-shrink: 0;
+}
+
+.pane {
+    position: relative;;
+    padding: 2em;
+    background-color: white;
+    overflow-y: scroll;
+    box-shadow: 0px 4px 18px rgba(173, 184, 202, 0.16);
+    border-radius: 0px 12px 12px 12px;
+    overflow-y: auto;
+}
+
+
+@media screen and (max-width:730px) {
+    .pane {
+        border-radius: 0px 0 12px 12px;
+    }
+}
+
+
+.active {
+    background: white !important;
+
+  & .counter{
+    background: #F2F4F8;
+  }
+}
+
+@media screen and (max-width:940px) {
+    .tab {
+        font-size: 12px;
+        padding: 0.75rem 1rem;
+    }
+}
+
+@media screen and (max-width:730px) {
+    .tab {
+        flex: 1 1;
+        padding: 0.5rem 0.5rem;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .nav-tabs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

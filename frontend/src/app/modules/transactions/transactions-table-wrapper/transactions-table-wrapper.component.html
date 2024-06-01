@@ -1,0 +1,15 @@
+<div class="h-full flex flex-col">
+  <div class="invoices-header">
+    <div>
+      <h3>{{title}}</h3>
+      <p class="text-grey-2">{{subTitle}}</p>
+    </div>
+    <div class="sort-by-container">
+      <app-all-accounts-dropdown></app-all-accounts-dropdown>
+    </div>
+  </div>
+  <div class="h-full">
+    <ng-content></ng-content>
+  </div>
+</div>
+

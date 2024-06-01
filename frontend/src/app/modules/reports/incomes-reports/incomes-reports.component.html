@@ -1,0 +1,44 @@
+<!-- <div class="flex flex-row">
+  <div class="w-full" *ngIf="(chart$ | async) as vm; else loading">
+
+    <app-simple-chart-example [simpleChart]="vm"></app-simple-chart-example>
+  </div>
+</div> -->
+
+<div class="w-full flex flex-row justify-between items-center">
+  <div class="w-90" *ngIf="(chart$ | async) as vm; else loading">
+    <app-empty-state [message]="'There is no one transaction. Choose another period.'" *ngIf="!vm.values.length"></app-empty-state>
+    <app-simple-chart-example
+      *ngIf="vm.values.length"
+      class="w-full"
+      [simpleChart]="vm"
+      [type]="0"></app-simple-chart-example>
+  </div>
+  <div class="flex flex-col">
+    <div *ngFor="let item of dates">
+      <app-date-item [model]="item" class="w-full cursor-pointer" (click)="onClick(item)"></app-date-item>
+    </div>
+
+    <div class="w-full flex flex-col cursor-pointer p-4 payment-method">
+      <span class="main-info">Custom</span>
+      <div class="flex items-center">
+        <mat-date-range-input [rangePicker]="picker" disabled [formGroup]="range">
+          <input style="color: #898E96; font-size: 0.75rem; font-weight: normal;"
+            matStartDate formControlName="start" (dateChange)="onDateChange($event)" placeholder="Start date">
+          <input style="color: #898E96; font-size: 0.75rem; font-weight: normal;"
+            matEndDate formControlName="end" (dateChange)="onDateChange($event)" placeholder="End date">
+        </mat-date-range-input>
+        <div>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker disabled="false"></mat-date-range-picker>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="spinner-container">
+    <app-spinner class="flex items-center"></app-spinner>
+  </div>
+</ng-template>

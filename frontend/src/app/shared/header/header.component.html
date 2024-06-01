@@ -1,0 +1,10 @@
+<div class="main-content-header">
+  <div class="header-name">
+      <img src="{{icon}}" alt="">
+      <span>{{title}}</span>
+  </div>
+  <div class="header-actions">
+      <app-button *ngIf="secondaryButton" [config]="secondaryButton" variant="outlined"></app-button>
+      <app-button *ngIf="primaryButton" [config]="primaryButton"></app-button>
+  </div>
+</div>

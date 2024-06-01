@@ -1,0 +1,19 @@
+.input-field {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 0;
+
+  & input{
+    color: #898E96;
+  }
+
+  & img {
+   margin-right: 10px;
+  }
+
+  & input:focus {
+    border: none;
+    outline: none;
+  }
+}
+

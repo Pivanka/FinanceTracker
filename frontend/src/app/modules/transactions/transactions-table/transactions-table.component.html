@@ -1,0 +1,39 @@
+<app-transactions-table-wrapper
+[title]="title"
+*ngIf="!(isEmpty | async) || !(isLoading | async)">
+  <div class="h-full">
+    <app-table-header [cells]="headerCells" (headerEvent)="headerClick($event)"></app-table-header>
+    <div *ngIf="(transactionsWithPagination$ | async) as vm" class="w-full h-full flex flex-col justify-between">
+      <div>
+        <app-table-row *ngFor="let row of vm.items; index as i" [data]="row" [cells]="headerCells" [rowIndex]="i"
+          (rowEvent)="rowClick($event)">
+        </app-table-row>
+      </div>
+      <div>
+        <app-pagination *ngIf="vm.totalPages > 1 && (pageSize$ | async) as pageSize" [totalCount]="vm.totalCount"
+          [pageSize]="pageSize" [currentPage]="vm.pageNumber" (onPageChange)="toPage($event)"></app-pagination>
+      </div>
+    </div>
+  </div>
+</app-transactions-table-wrapper>
+
+<div *ngIf="(isEmpty | async) && !(isLoading | async)" class="empty-invoices-container">
+  <div>
+    <app-empty-state message="You have no transactions. Let’s create one."></app-empty-state>
+    <div class="empty-invoices__buttons">
+      <app-button *ngIf="secondaryButton" [config]="secondaryButton" variant="outlined"></app-button>
+      <app-button *ngIf="primaryButton" [config]="primaryButton"></app-button>
+    </div>
+  </div>
+</div>
+
+<mat-menu #menu="matMenu" class="menu-content">
+  <button *ngIf="hasAccess$ | async" mat-menu-item class="menu-item" (click)="onDeleteClick()">
+    <img class="menu-item-icon" src="../../../../../assets/images/icons/grey_delete.svg" alt="" />
+    Delete
+  </button>
+</mat-menu>
+
+<div class="spinner-container" *ngIf="(isLoading | async) === true">
+  <app-spinner class="flex items-center container-middle"></app-spinner>
+</div>

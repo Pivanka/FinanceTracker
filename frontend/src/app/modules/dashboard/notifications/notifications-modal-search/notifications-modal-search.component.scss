@@ -1,0 +1,23 @@
+.notifications > div:not(:last-of-type) {
+  margin-bottom: 1.5rem;
+}
+
+.wide-container {
+  width: 492px;
+  min-height: 532px;
+}
+
+.notifications {
+  min-height: 275px;
+}
+
+.notifications-container-flex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-middle {
+  display: flex;
+  align-items: center;
+}

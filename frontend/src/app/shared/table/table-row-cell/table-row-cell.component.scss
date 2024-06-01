@@ -1,0 +1,58 @@
+:host(.checkBox) {
+    flex-grow: 0;
+    margin-right: 8px;
+  }
+
+:host(.radio) {
+    flex: 0 0 32px;
+    margin-right: 8px;
+  }
+*{
+  color:#202123;
+}
+.help-text{
+    color: var(--grey3);
+}
+
+.radio{
+    color: var(--blue);
+}
+
+.statusRed{
+    background-color: var(--red);
+}
+
+.badge{
+  padding: 0.25rem 0.5rem;
+  border-radius: 1rem;
+}
+
+.badge-red{
+  background-color: #FCF0ED;
+  color:#ED5252;
+}
+.badge-yellow{
+  color:#F2A450;
+  background-color: #FDF4E7;
+}
+.badge-green{
+  color:#64C68D;
+  background-color: #EFFAF4;
+}
+
+
+img {
+  width: 20px;
+  height: 20px;
+  //object-fit: cover; /* це збереже пропорції зображення, якщо воно не квадратне */
+}
+
+.negative{
+  background-color: #FCF0ED;
+  color: #ED5252;
+}
+
+.positive{
+  background-color: #EFFAF4;
+  color: #35995F;
+}

@@ -1,0 +1,13 @@
+<a
+  routerLink="{{route}}"
+  routerLinkActive="active"
+  [routerLinkActiveOptions]="{exact: options}"
+  (isActiveChange)="onRouterLinkActive()"
+  (mouseover) ="mouseOver()"
+  (mouseleave) = "mouseLeave()"
+  (click)="onClick()">
+  <img *ngIf="!isHover && !isActive" src="{{iconDefault}}" alt="{{linkTitle}}">
+  <img *ngIf="isHover || isActive" src="{{iconBlue}}" alt="{{linkTitle}}">
+  {{linkTitle}}
+  <img *ngIf="isNotificationTab && isUnreadNotification" class="pl-1 img-blink" src="assets/images/icons/circle.svg" alt="">
+</a>

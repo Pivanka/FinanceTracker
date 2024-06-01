@@ -1,0 +1,7 @@
+<app-checkbox *ngIf="isCheckBox" class="flex" (click)="onClick()" [isChecked]="selectAll">
+</app-checkbox>
+<div *ngIf="!isCheckBox" class="flex" (click)="onClick()">
+    <label>{{cell.text}}</label>
+    <img class="ml-4" *ngIf="isSortAscending" src="assets/images/icons/ascending.svg">
+    <img class="ml-4" *ngIf="isSortDescending" src="assets/images/icons/descending.svg">
+</div>

@@ -1,0 +1,12 @@
+<hr class="separator" *ngIf="rowIndex > 0">
+
+<div class="row flex w-full items-center">
+    <app-table-row-cell *ngFor="let cell of cells"
+       [ngStyle]="{'min-width': cell.minWidth,'max-width':cell.maxWidth,'width':cell.width, 'flex-basis':cell.width}"
+       class="cell"
+       [cell]="cell"
+       [data]="getCellData(cell)"
+       (cellEvent)="onClick($event)"
+       [selectAll]="selectAll">
+    </app-table-row-cell>
+ </div>

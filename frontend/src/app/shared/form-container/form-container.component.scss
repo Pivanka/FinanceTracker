@@ -1,0 +1,11 @@
+.form-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-width: 360px;
+  background-color: white;
+}
+ng-content{
+  width: 100%;
+}

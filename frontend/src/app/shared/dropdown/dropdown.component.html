@@ -1,0 +1,27 @@
+<div class = "text-grey-2 mb-2" *ngIf="label">
+  {{label}}
+</div>
+<div class="w-full relative">
+  <button type="button" (click)="openSelectList()" class="dropdown w-full cursor-pointer py-1.5 pl-4 pr-10 text-left">
+    <div class="flex items-center">
+      <span class="change__text ml-3 block font-normal" [className]="placeholder && !value ? 'placeholder' : ''">
+        {{ getValue(value) ? getValue(value) : (placeholder ?? getValue(this.items[0])) }}
+      </span>
+      <span class="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
+        <img *ngIf="!isSelectListOpen" src="../../../../assets/images/icons/down.svg" alt="">
+        <img *ngIf="isSelectListOpen" src="../../../../assets/images/icons/up.svg" alt="">
+      </span>
+    </div>
+  </button>
+
+  <div class="items mt-2 w-full overflow-auto absolute z-10 max-h-52 font-normal" *ngIf="isSelectListOpen && items">
+    <ul class="w-full" *ngFor="let item of items">
+      <li class="cursor-pointer select-none" (click)="updateList(item)">
+        <div class="flex items-center" [ngClass]="item == value ? 'selected' : ''">
+          <span class="ml-4 block font-normal">{{getValue(item)}}</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+

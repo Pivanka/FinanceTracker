@@ -1,0 +1,48 @@
+.transactions {
+  min-height: 267px;
+}
+
+.transactions > div{
+  border-bottom: 1px solid #E5E8EC;
+  padding-bottom: 0.75rem;
+}
+
+.transactions > div:not(:first-of-type) {
+  margin-top: 0.75rem;
+}
+
+.transactions > div:last-of-type {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.transactions-container{
+  min-height: 444px;
+}
+
+.transactions-container-flex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container-middle {
+  flex: 1;
+  align-self: center;
+  text-align: center;
+  display: inline-block;
+}
+
+.container-left {
+  flex: 1;
+  align-self: flex-start;
+  display: inline-block;
+}
+
+a {
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration-line: underline;
+  color: #0D99FF;
+}

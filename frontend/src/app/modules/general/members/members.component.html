@@ -1,0 +1,22 @@
+<div class="members-container">
+  <div class="flex justify-between">
+    <h2>Members</h2>
+    <div class="flex gap-4" *ngIf="hasAccess$ | async">
+      <app-button text="+ Invite a new member" (onClick)="openAddEmployeeModal()"></app-button>
+    </div>
+  </div>
+  <div *ngIf="(members$ | async) as vm; else loading">
+    <div class="grid grid-cols-2 gap-x-6 gap-y-2 mt-6">
+      <app-member *ngFor ="let member of vm" [member]="member"></app-member>
+    </div>
+    <div class="container-middle" *ngIf="!vm.length">
+      <app-empty-state [message]="'No members yet. Invite somebody to your team.'"></app-empty-state>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="spinner-container">
+    <app-spinner *ngIf="loading" class="flex items-center"></app-spinner>
+  </div>
+</ng-template>

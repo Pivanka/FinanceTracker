@@ -1,0 +1,57 @@
+<app-checkbox *ngIf="isCheckBox" class="flex" (checkedEvent)="onClick($event)" [isChecked]="selectAll ?? false">
+    <div>{{!!data.item2 ? '' : data.item2}}</div>
+</app-checkbox>
+
+<div *ngIf="isInvoice" class="flex" (click)="onClick()">
+    <div class="font-medium">{{data.item1}}</div>
+</div>
+
+<div *ngIf="isNone" class="flex" (click)="onClick()">
+  <div class="font-medium">{{data.item1}}</div>
+</div>
+
+<div *ngIf="isStatus && getStatus()!=''" class="flex" (click)="onClick()">
+    <div class="badge" [ngClass]="{'badge-red':redBadge(),'badge-yellow':yellowBadge(),'badge-green':greenBadge()}">
+        {{getStatus()}}</div>
+</div>
+
+<div *ngIf="isTwoFlors" class="flex-col" (click)="onClick()">
+    <div class="font-medium">{{data.item1 | date:'MMM d, y'}}</div>
+    <div class="help-text">initiate by {{data.item2 | date:'MMM d'}}</div>
+</div>
+
+<div *ngIf="isDate" class="flex-col" (click)="onClick()">
+    <div class="font-medium">{{data.item1 | date:'MMM d, y'}}</div>
+</div>
+
+<div *ngIf="isWithLogo" class="flex items-center" (click)="onClick()">
+    <img *ngIf="!!data.item1" style="display: inline-block;" [src]='data.item1' />
+    <div class="font-medium ml-2">{{data.item2}}</div>
+</div>
+
+<!-- <div *ngIf="isWithCurrency" class="rounded-2xl h-min py-1 px-2 whitespace-nowrap flex items-center"
+  (click)="onClick()"
+  [ngClass]="data.item3 === 0 ? 'positive' : 'negative'">
+    <div class="font-medium">{{data.item1 | number: '1.2-2'}}</div>
+    <div class="help-text  ml-2">{{data.item2}}</div>
+</div> -->
+
+<span *ngIf="isWithCurrency" (click)="onClick()"
+  class="rounded-2xl h-min py-1 px-2 whitespace-nowrap" [ngClass]="data.item3 === null ? 'positive' : 'negative'">
+  {{data.item3 === null ? '+' : '-'}}
+  {{data.item1 | number : '.2'}} {{data.item2}}
+</span>
+
+<div *ngIf="isRadio" class="flex">
+    <input class="w-6 h-6 mr-2 radio" type="radio" name={{cell.id}} value={{secondData}} (change)="onClick($event)">
+    <label>{{data.item2}}</label>
+</div>
+
+<div (click)="$event.stopPropagation()" *ngIf="isMenu" class="flex justify-end">
+    <div>
+        <button mat-button  #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="firstData" class="dropdown-menu menu"
+            (click)="onClick()">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+    </div>
+</div>

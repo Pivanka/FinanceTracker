@@ -1,0 +1,49 @@
+<app-modal-container class="px-6" [minWidth]="'588px'">
+  <app-modal-title text="Invite a new Member"></app-modal-title>
+  <div mat-dialog-content>
+    <div class="mb-4">
+      <app-input
+        [label]="'E-mail'"
+        placeholder="example@companyname.com"
+        type="text"
+        [control]="getFormControl('email')">
+      </app-input>
+      <app-generic-error-message [control]="getFormControl('email')"></app-generic-error-message>
+    </div>
+    <div class="mb-4">
+      <app-input
+        label="First Name"
+        placeholder="Jane"
+        type="text"
+        [control]="getFormControl('firstName')">
+      </app-input>
+      <app-generic-error-message [control]="getFormControl('firstName')"></app-generic-error-message>
+    </div>
+    <div class="mb-4">
+      <app-input
+        label="Last Name"
+        placeholder="Smith"
+        type="text"
+        [control]="getFormControl('lastName')">
+      </app-input>
+      <app-generic-error-message [control]="getFormControl('lastName')"></app-generic-error-message>
+    </div>
+    <div class="mb-4">
+      <app-dropdown
+        [items]="roles"
+        [formControl]="getFormControl('role')"
+        label="Choose a role"
+        [defaultValue]="roles[0]"></app-dropdown>
+      <app-generic-error-message [control]="getFormControl('role')"></app-generic-error-message>
+    </div>
+  </div>
+  <app-modal-actions-container>
+    <app-button
+      type="submit"
+      [disabled]="!memberForm.valid"
+      text="Add"
+      [classList]="['w-[155px]']"
+      (onClick)="onSubmit()">
+    </app-button>
+  </app-modal-actions-container>
+</app-modal-container>

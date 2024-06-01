@@ -1,0 +1,25 @@
+<div class="rounded-xl p-8 bg-white notifications-container sm:notifications-container-flex"
+     *ngIf="(notifications$ | async) as vm; else loading"
+     [ngClass]="!vm.items.length ? 'notifications-container-flex' : ''">
+  <h3 class="container-left">Notifications</h3>
+
+  <div class="notifications w-full mt-7 py-1" *ngIf="vm.items.length">
+    <div *ngFor="let item of vm.items">
+      <app-notification-item [notification]="item" class="cursor-pointer" (click)="openNotificationModal(item)"></app-notification-item>
+    </div>
+  </div>
+
+  <p class="text-center mt-7 cursor-pointer" *ngIf="vm.totalCount">
+    <a (click)="viewAll()">View all ({{vm.totalCount}})</a>
+  </p>
+
+  <div class="container-middle" *ngIf="!vm.items.length">
+    <app-empty-state [message]="'No notifications yet'"></app-empty-state>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="rounded-xl p-8 bg-white notifications-container">
+    <app-placeholder [lines]="4"></app-placeholder>
+  </div>
+</ng-template>

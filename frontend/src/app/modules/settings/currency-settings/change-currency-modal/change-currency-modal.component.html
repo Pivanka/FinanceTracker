@@ -1,0 +1,14 @@
+<app-modal-container class="wide-container py-6 px-6">
+  <h2 class="mb-6">Change currency for team</h2>
+  <div *ngIf="currencies$ | async as vm">
+    <p class="text">Currency</p>
+    <app-dropdown type = 'currency'
+      [items]="vm"
+      (itemSelected)="selectCurrency($event)"></app-dropdown>
+  </div>
+  <div class="buttons pt-6">
+    <app-button variant="decline" [config]="cancelButtonConfig"></app-button>
+    <app-button variant="standard" [config]="saveButtonConfig" [disabled]="!selectedCurrency"></app-button>
+  </div>
+
+</app-modal-container>

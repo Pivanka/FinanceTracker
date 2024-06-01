@@ -1,0 +1,40 @@
+<app-modal-container class="px-6" [minWidth]="'588px'">
+  <app-modal-title text="Edit the Account"></app-modal-title>
+  <div mat-dialog-content>
+    <div class="mb-4">
+      <app-input
+        label="Title"
+        placeholder="Title"
+        type="text"
+        [control]="getFormControl('title')">
+      </app-input>
+      <app-generic-error-message [control]="getFormControl('title')"></app-generic-error-message>
+    </div>
+    <div class="mb-4">
+      <p class="text">Currency</p>
+      <app-dropdown class="w-20" [formControl]="getFormControl('currency')"
+        [items]="['USD', 'EUR', 'UAH']"
+        [defaultValue]="data.currency"
+        [disabled]="true"></app-dropdown>
+    </div>
+    <div class="mb-4">
+      <p class="text">Choose Icon</p>
+      <div class="icons">
+        <img *ngFor="let item of icons"
+            [ngClass]="{'selected': item === selectedImage}"
+            [src]="item"
+            alt="icon"
+            (click)="selectImage(item)">
+      </div>
+    </div>
+  </div>
+  <app-modal-actions-container>
+    <app-button
+      type="submit"
+      [disabled]="!accountForm.valid || !selectedImage"
+      text="Edit"
+      [classList]="['w-[155px]']"
+      (onClick)="onSubmit()">
+    </app-button>
+  </app-modal-actions-container>
+</app-modal-container>

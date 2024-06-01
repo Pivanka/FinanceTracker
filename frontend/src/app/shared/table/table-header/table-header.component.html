@@ -1,0 +1,9 @@
+<div class="table-header flex  items-center">
+  <app-table-header-cell *ngFor="let cell of cells"
+     [ngStyle]="{'min-width': cell.minWidth,'max-width':cell.maxWidth,'width':cell.width, 'flex-basis':cell.width}"
+     class="cell"
+     [cell]="cell"
+     (headerEvent)="onClick($event)"
+     [selectAll]="selectAll">
+  </app-table-header-cell>
+</div>

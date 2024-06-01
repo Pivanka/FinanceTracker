@@ -1,0 +1,15 @@
+<div class="categories-container">
+  <div class="flex flex-row justify-between items-center">
+    <h2>Categories</h2>
+    <app-button [config]="config" variant="standard" (click)="addCategory()"></app-button>
+  </div>
+  <div *ngIf="(categories$ | async) as vm; else loading">
+    <app-accordion *ngIf="(customCategories$ | async) as cvm; else loading" [categories]="categories$" [customCategories]="customCategories$"></app-accordion>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="spinner-container">
+    <app-spinner *ngIf="loading" class="flex items-center"></app-spinner>
+  </div>
+</ng-template>

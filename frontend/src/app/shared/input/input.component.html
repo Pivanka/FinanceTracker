@@ -1,0 +1,26 @@
+<div class="form-field-container">
+  <div class = "label mb-2" *ngIf="label">
+      {{label}}
+  </div>
+  <div class="inline-block w-full relative input-container">
+      <span class="prefix" [class.focus]="control?.value" *ngIf="prefix">{{prefix}}</span>
+      <input matInput class="input-field w-full" *ngIf="control && !currencyConfig" [type]="type" #inputElement
+      [min]="type === 'date' ? (min) : ''"
+      [formControl]="control"
+      [placeholder]="placeholder"
+      [attr.disabled]="disabled ? true : null"
+      (input)="onInput()">
+
+    <input matInput currencyMask
+           class="input-field w-full" *ngIf="control && currencyConfig"
+           [formControl]="control"
+           [placeholder]="placeholder"
+           [attr.disabled]="disabled ? true : null">
+      <img class="cursor-pointer absolute right-4 top-2" *ngIf="control?.value && type !== 'date' && type !== 'password' && !disabled && displayClearButton" (click)="onClear()" src="../../../assets/images/icons/cancel_icon.svg" alt="">
+      <img class="cursor-pointer absolute right-4 top-2" *ngIf="type == 'password' && !disabled"
+           (click)="onChangeType($event)"
+           src="../../../assets/images/icons/eye.svg" alt="show password">
+
+  </div>
+</div>
+

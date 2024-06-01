@@ -1,0 +1,25 @@
+.icon{
+  box-shadow: 0 5.05263px 12.6316px rgba(128, 141, 163, 0.16);
+}
+
+.negative{
+  background-color: #FCF0ED;
+  color: #ED5252;
+}
+
+.positive{
+  background-color: #EFFAF4;
+  color: #35995F;
+}
+
+.transaction-with-date {
+  flex: 1;
+  min-width: 0;
+  span {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+

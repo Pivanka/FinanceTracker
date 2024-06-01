@@ -1,0 +1,64 @@
+:host {
+  background-color: #F2F4F8;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 580px;
+  min-height: 600px;
+  height: 100%;
+
+  >.logo-conteiner {
+      display: inline-flex;
+      flex-direction: column;
+      max-width: 410px;
+
+      >.header {
+          position: relative;
+          width: 360px;
+          height: 96px;
+
+          >h1 {
+              color: #202123; //Black
+          }
+
+          >.name {
+              position: absolute;
+              left: 165px;
+              top: 45px;
+              width: 159px;
+              height: 54px;
+              font-family: 'Poller One', cursive;
+              color: #0D99FF; // Blue
+              font-size: 36px;
+              line-height: 54px;
+
+              >.vector {
+                  position: absolute;
+                  top: 39px;
+                  left: -75px;
+              }
+          }
+      }
+
+      >.main-info {
+          margin-top: 56px;
+          width: 410px;
+          height: 96px;
+      }
+      >.companies-count {
+          margin-top: 92px;
+          margin-bottom: 4px;
+          width: 360px;
+          height: 36px;
+          >h2 {
+              color: #202123; //Black
+          }
+      }
+      >.info1 {
+          margin-top: 24px;
+      }
+  }
+}

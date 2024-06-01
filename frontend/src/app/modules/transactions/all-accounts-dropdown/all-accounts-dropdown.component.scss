@@ -1,0 +1,59 @@
+.dropdown {
+  color: #454950;
+  background-color: white;
+  height: 40px;
+  border-radius: 6px;
+}
+
+.items {
+  border-radius: 6px;
+  background-color: white;
+  box-shadow: 0px 4px 27px rgba(117, 130, 153, 0.25);
+  border-radius: 6px;
+  width: 200px;
+}
+
+li {
+  padding: 16px;
+
+  &:hover {
+    color: #0D99FF;
+  }
+}
+
+.white {
+  background-color: white;
+  color: white;
+}
+
+.selected {
+  color: #0D99FF;
+}
+
+
+.company-name,
+.selected-company-name {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.company-name {
+  color: #454950;
+}
+
+.selected-company-name {
+  color: #0D99FF
+}
+
+.company-invoices {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #898E96;
+  width: 110%;
+}

@@ -1,0 +1,22 @@
+<div class="accounts-methods-container">
+  <div class="flex flex-row justify-between items-center">
+    <h2>Accounts</h2>
+    <app-button [config]="config" variant="standard" (click)="addAccount()"></app-button>
+  </div>
+  <div *ngIf="(accounts$ | async) as vm; else loading">
+    <div class="custom-container mt-6 pb-4">
+      <app-account-item class="item" [model]="item" *ngFor="let item of vm; let i = index"
+                                [ngClass]="selected == i ? 'selected' : ''" (click)="select(i)">
+      </app-account-item>
+    </div>
+    <div class="container-middle" *ngIf="!vm.length">
+      <app-empty-state [message]="'No accounts yet. Create one.'"></app-empty-state>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="spinner-container">
+    <app-spinner *ngIf="loading" class="flex items-center"></app-spinner>
+  </div>
+</ng-template>

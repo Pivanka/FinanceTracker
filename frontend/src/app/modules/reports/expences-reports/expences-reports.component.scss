@@ -1,0 +1,24 @@
+
+.payment-method {
+  box-shadow: 0 4px 18px rgba(173, 184, 202, 0.16);
+  border-radius: 8px;
+
+  &:hover{
+    box-shadow: 0 4px 18px rgba(103, 116, 137, 0.16);
+  }
+}
+
+.main-info {
+  font-weight: 500;
+
+  &:only-child {
+    line-height: 44px;
+  }
+}
+
+.spinner-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

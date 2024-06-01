@@ -1,0 +1,26 @@
+* {
+    color: #202123;
+}
+
+.row {
+    height: 46px;
+}
+
+.cell {
+    flex-shrink: 1;
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+app-table-row-cell {
+    cursor: pointer;
+}
+
+.cantGrow {
+    flex-grow: 0;
+}
+
+.separator {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

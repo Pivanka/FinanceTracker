@@ -1,0 +1,14 @@
+:host(.checkBox) {
+  flex-grow: 0;
+  margin-right: 8px;
+}
+
+:host(.radio) {
+  flex: 0 0 24px;
+  margin-right: 8px;
+}
+
+* {
+  cursor: pointer;
+  user-select: none;
+}

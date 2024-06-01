@@ -1,0 +1,170 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+//@import url('../src/app/shared/shared.scss');
+
+// * {
+//   color: #202123;
+// }
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  background-color: #F2F4F8;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 48px
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.mat-dialog-container {
+  box-sizing: content-box !important;
+  border-radius: 12px !important;
+}
+
+.help-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+$button-blue: #0D99FF;
+$button-gray5: #CAD0D9;
+$button-gray6: #E5E8EC;
+$button-red: #ED5252;
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  gap: 0.5rem;
+  border: 1px solid $button-blue;
+  border-radius: 8px;
+}
+
+.stretch {
+  width: 100%;
+}
+
+.btn:disabled {
+  border: 1px solid $button-gray5 !important;
+}
+
+.standard {
+  background: $button-blue;
+  color: white;
+
+  &:disabled {
+    background: $button-gray5 !important;
+  }
+}
+
+.outlined {
+  color: $button-blue;
+  background: white !important;
+
+  &:disabled {
+    background: transparent !important;
+    color: $button-gray6;
+    border: 1px solid $button-gray5 !important;
+  }
+}
+
+.error {
+  border: 1px solid $button-red !important;
+  color: $button-red;
+}
+
+.btn:enabled:hover {
+  box-shadow: 0px 4px 12px rgba(92, 104, 124, 0.16);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: rgba(0, 0, 0, .9);
+}
+
+:root{
+  --grey7:#F2F4F8;
+  --grey6:#E5E8EC;
+  --grey5:#CAD0D9;
+  --grey4:#AFB4BD;
+  --grey3:#898E96;
+  --grey2:#70757E;
+  --grey1:#454950;
+  --black:#202123;
+
+  --blueLight:#F0F9FE;
+  --blueMedium:#9FD7FF;
+  --blue:#0D99FF;
+
+  --greenLight:#EFFAF4;
+  --green2:#ACE9C5;
+  --green:#64C68D;
+  --greenDark: #35995F;
+
+  --redLight:#FCF0ED;
+  --red:#ED5252;
+
+  --yellowLight:#FDF4E7;
+  --yellow:#F2A450;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.spinner-container{
+  z-index: 9999;
+}

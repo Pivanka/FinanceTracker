@@ -1,0 +1,24 @@
+
+img {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+    border-color: #007bff;
+  }
+}
+
+.icons{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.selected {
+  outline: #0D99FF solid 1px;
+  animation: fade-in 0.5s ease-in-out forwards
+}

@@ -1,0 +1,56 @@
+<app-modal-container class="px-6" [minWidth]="'588px'">
+  <app-modal-title text="New transaction"></app-modal-title>
+  <div mat-dialog-content>
+    <div class="tab-buttons">
+      <button type="button" [class.active]="transactionType?.value === 'Expense'" (click)="selectType('Expense')">Expense</button>
+      <button type="button" [class.active]="transactionType?.value === 'Income'" (click)="selectType('Income')">Income</button>
+    </div>
+    <div class="mb-4">
+      <app-category-dropdown [formControl]="getFormControl('category')" [categories]="categories$"
+        [customCategories]="customCategories$" [type]="transactionType?.value"></app-category-dropdown>
+    </div>
+    <div class="mb-4 w-120">
+      <div class="flex">
+        <div class="w-40">
+          <p class="text">Amount</p>
+          <app-input [placeholder]="'0'"
+          [type]="'number'"
+          [control]="getFormControl('amount')"
+          (input)="changeAmount()"></app-input>
+        </div>
+        <div class="ml-4 w-80" *ngIf="currencies$ | async as vm">
+          <p class="text">Currency</p>
+          <app-dropdown class="w-20"
+            [formControl]="getFormControl('currency')"
+            type = 'currency'
+            [items]="vm"
+            (itemSelected)="selectCurrency($event)"></app-dropdown>
+        </div>
+      </div>
+      <div class="mb-4 w-120" *ngIf="amount$ | async as amount">
+        {{amount.amount | number:'1.2-2'}} {{transactionForm.controls['account'].value.currency}}
+      </div>
+    </div>
+    <div class="mb-4">
+      <p class="text">Notes</p>
+      <app-input placeholder="Type additional notes here" [control]="getFormControl('notes')"></app-input>
+    </div>
+    <div class="mb-4" *ngIf="accounts$ | async as vm">
+      <p class="text">Account</p>
+      <app-dropdown class="w-20"
+        [formControl]="getFormControl('account')"
+        [items]="vm"
+        [defaultValue]="vm[0]"
+        (itemSelected)="selectAccount($event)"></app-dropdown>
+    </div>
+  </div>
+  <app-modal-actions-container>
+    <app-button
+      type="submit"
+      [disabled]="!transactionForm.valid"
+      text="Add"
+      [classList]="['w-[155px]']"
+      (onClick)="onSubmit()">
+    </app-button>
+  </app-modal-actions-container>
+</app-modal-container>

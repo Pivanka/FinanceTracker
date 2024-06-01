@@ -1,0 +1,48 @@
+.wide-container {
+  width: 492px;
+  display: block;
+}
+
+.spinner-container{
+  width: 492px;
+  height: calc(404px - 48px);
+  display: flex;
+  justify-content: center;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: 100%;
+
+  & app-button{
+    width: 100%;
+  }
+}
+
+a {
+  color: #0D99FF;
+  font-weight: 500;
+}
+
+.preview{
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.preview > div{
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.additional-info {
+  color: #898E96;
+  font-weight: 500;
+}

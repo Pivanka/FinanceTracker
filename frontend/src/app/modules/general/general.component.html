@@ -1,0 +1,11 @@
+<app-header [title]="'General'" [icon]="'assets/images/icons/general.svg'"></app-header>
+<app-tabs height="auto">
+  <app-tab title="Members" link="members" [count]="(membersCount$ | async) || 0">
+  </app-tab>
+  <app-tab title="Accounts" [count]="(accountsCount$ | async) || 0" link="accounts">
+  </app-tab>
+  <app-tab title="Categories" link="categories">
+  </app-tab>
+</app-tabs>
+
+<div *ngIf="templateRef" [ngTemplateOutlet]="templateRef"></div>

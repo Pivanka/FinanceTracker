@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <style type="text/css">
+            @@media screen {
+                @@font-face {
+                    font-family: 'Lato';
+                    font-style: normal;
+                    font-weight: 400;
+                    src: url(https://fonts.gstatic.com/s/lato/v11/qIIYRU-oROkIk8vfvxw6QvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+                }
+            }
+            body, table, td, a {
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+            }
+            table {
+                border-collapse: collapse;
+            }
+            body {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                font-family: 'Lato', Helvetica, Arial, sans-serif;
+                background-color: #0d99ff;
+            }
+        </style>
+    </head>
+
+    <body>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td bgcolor="0d99ff" align="center">
+                    <table border="0" cellpadding="0" cellspacing="0" width="60%">
+                        <tr>
+                            <td bgcolor="#ffffff" align="center" style="padding: 20px">
+                                <h2 style="font-size: 36px; font-weight: 400; letter-spacing: 4px; margin: 0">@ViewData["EmailTitle"]</h2>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td bgcolor="#f4f4f4" align="center">
+                    <table border="0" cellpadding="0" cellspacing="0" width="60%">
+                        <tr>
+                            <td bgcolor="#ffffff" align="left" style="padding: 20px 30px; font-size: 18px; line-height: 25px">
+                                @RenderBody()
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

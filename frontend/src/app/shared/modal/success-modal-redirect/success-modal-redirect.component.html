@@ -1,0 +1,11 @@
+<app-modal-container [maxWidth]="data.maxWidth ?? '450px'" [showClose]="false">
+  <app-modal-success  [title]="data.title ?? 'Success!'" [text]="data.text" [successful]="data.unsuccessful!==true"></app-modal-success>
+  <app-modal-actions-container>
+          <app-button *ngIf="data.secondaryButton" [text]="data.secondaryButton.label" variant="outlined"
+          [mat-dialog-close]
+          [routerLink]="data.secondaryButton.route"></app-button>
+          <app-button *ngIf="data.primaryButton" [text]="data.primaryButton.label" variant="standard"
+          [mat-dialog-close]
+          [routerLink]="data.primaryButton.route"></app-button>
+  </app-modal-actions-container>
+</app-modal-container>

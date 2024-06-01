@@ -1,0 +1,10 @@
+﻿@using Finance.RazorHtmlEmails.Views.Emails.Invitation
+@model InvitationEmailViewModel
+
+@{
+    ViewData["EmailTitle"] = "Hi, " + @Model.Username + "!";
+}
+
+<p style="color: #5f6a6a">
+    You've been invited to join a FinTrack by @Model.InvitedBy. It's an tool that helping you track your budget. Click the following invitation <a style="text-decoration: underline" href="@Model.InvitationLinkUrl">link</a> to join. Your one time password is @Model.Password
+</p>

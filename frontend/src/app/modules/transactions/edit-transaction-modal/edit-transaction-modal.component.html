@@ -1,0 +1,45 @@
+<app-modal-container class="px-6" [minWidth]="'588px'">
+  <app-modal-title text="New transaction"></app-modal-title>
+  <div mat-dialog-content>
+    <div class="tab-buttons">
+      <button type="button" class="active">{{transactionType}}</button>
+    </div>
+    <div class="mb-4">
+      <app-category-dropdown
+      [formControl]="getFormControl('category')"
+      [categories]="categories$"
+      [defaultValue]="data.category"></app-category-dropdown>
+    </div>
+    <div class="mb-4 flex w-80">
+      <div class="w-40">
+        <p class="text">Amount</p>
+        <app-input [placeholder]="'0'" [type]="'number'" [control]="getFormControl('amount')"></app-input>
+      </div>
+      <div class="ml-4 w-40">
+        <p class="text">Currency</p>
+        <app-dropdown class="w-20"
+         [formControl]="getFormControl('currency')"
+         [defaultValue]="data.currency"
+          [items]="['USD', 'EUR', 'UAH']"></app-dropdown>
+      </div>
+    </div>
+    <div class="mb-4">
+      <p class="text">Notes</p>
+      <app-input placeholder="Type additional notes here"
+       [control]="getFormControl('notes')"></app-input>
+    </div>
+    <div class="mb-4">
+      <p class="text">Account</p>
+      <app-dropdown class="w-20"  [formControl]="getFormControl('account')"
+        [items]="(accounts$ | async)!" [defaultValue]="data.account" ></app-dropdown>
+    </div>
+  </div>
+  <app-modal-actions-container *ngIf="hasAccess$ | async">
+    <app-button
+      type="submit"
+      text="Edit"
+      [classList]="['w-[155px]']"
+      (onClick)="onSubmit()">
+    </app-button>
+  </app-modal-actions-container>
+</app-modal-container>

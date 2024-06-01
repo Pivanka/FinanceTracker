@@ -1,0 +1,36 @@
+.dropdown{
+  color: #454950;
+  background-color: #F2F4F8;
+  height: 40px;
+  border-radius: 6px;
+}
+
+.items{
+  border-radius: 6px;
+  background-color: #F2F4F8;
+}
+
+li{
+  padding: 16px;
+  &:hover{
+    color: #0D99FF;
+  }
+}
+
+.selected{
+  color: #0D99FF;
+  &::before{
+    content: '\2022';
+    color: #0D99FF;
+    margin-right: 5px;
+    font-size: 20px;
+  }
+}
+
+button:disabled{
+  color: rgba(0,0,0,.38);
+}
+
+.placeholder{
+  color: #AFB4BD;
+}

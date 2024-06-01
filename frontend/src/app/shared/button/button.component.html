@@ -1,0 +1,9 @@
+<button
+  [ngClass]="classList.concat(['btn', variant, stretch ? 'stretch' : ''])"
+  [type]="type"
+  class="w-full"
+  [disabled]="config?.disabled ?? disabled"
+  (click)="config?.onClick ? config?.onClick() : click()">
+  {{ config?.text ?? text}}
+  <ng-content></ng-content>
+</button>

@@ -1,0 +1,54 @@
+<app-modal-container class="wide-container px-6" *ngIf="!(isLoading$ | async) else loading">
+
+  <h2 class="mb-6">Personal info</h2>
+
+  <div class="flex flex-row items-center">
+    <div class="preview">
+      <div [style.background-image]='selectImage()'> </div>
+    </div>
+
+    <div class="flex flex-row justify-between w-full">
+      <div class="cursor-pointer">
+        <a class="ml-6 text-grey-3" (click)="uploadPhoto.click()">Upload photo</a>
+        <input type="file" #uploadPhoto [hidden]="true" (change)="onFileChange($event)" accept="image/jpg, image/jpeg, image/png">
+      </div>
+
+      <div class="flex flex-row cursor-pointer" (click)="remove()" *ngIf="form.controls.avatar.value">
+        <img src="assets/images/icons/delete_icon.svg" alt="delete">
+        <span class="additional-info ml-3">Remove photo</span>
+      </div>
+    </div>
+  </div>
+  <app-generic-error-message [control]="form.controls.avatar"></app-generic-error-message>
+
+  <div class="pt-6">
+    <label class="text-grey-2">First Name</label>
+    <app-input [control]="form.controls.firstName" [defaultValue]="data.firstName"></app-input>
+    <app-generic-error-message [control]="form.controls.firstName"></app-generic-error-message>
+  </div>
+
+  <div class="pt-6">
+    <label class="text-grey-2">Last Name</label>
+    <app-input [control]="form.controls.lastName" [defaultValue]="data.lastName"></app-input>
+    <app-generic-error-message [control]="form.controls.lastName"></app-generic-error-message>
+  </div>
+
+  <div class="buttons pt-8">
+    <app-button variant="decline" [config]="cancelButtonConfig" (click)="close()"></app-button>
+    <app-button
+      type="submit"
+      [disabled]="!form.valid"
+      text="Save"
+      [classList]="['w-[155px]']"
+      (onClick)="onSubmit()">
+    </app-button>
+  </div>
+
+</app-modal-container>
+
+<ng-template #loading>
+  <div class="spinner-container">
+    <app-spinner *ngIf="isLoading$" class="flex items-center"></app-spinner>
+  </div>
+</ng-template>
+

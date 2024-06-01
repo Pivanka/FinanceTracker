@@ -1,0 +1,14 @@
+<div *ngIf="control && control.errors && (control.dirty || control.touched)" class="error-message w-full help-text">
+  <p *ngIf="control.errors['required']">This field is required</p>
+  <p *ngIf="control.errors['requiredTrue']">This field is required</p>
+  <p *ngIf="control.errors['minlength']">Too short</p>
+  <p *ngIf="control.errors['maxlength']">Too long</p>
+  <p *ngIf="control.errors['maxSize']">The file is too big</p>
+  <p *ngIf="control.errors['email']">Incorrect email</p>
+  <p *ngIf="control.errors['pattern']">Invalid format</p>
+  <p *ngIf="control.errors['invalidMsg']">{{control.errors['invalidMsg']}}</p>
+  <p *ngIf="control.errors['emailDuplicate']">Duplicate Email</p>
+</div>
+<div *ngIf="message" class="error-message w-full help-text">
+  <p>{{message}}</p>
+</div>

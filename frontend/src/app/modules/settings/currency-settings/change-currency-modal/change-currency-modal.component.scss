@@ -1,0 +1,35 @@
+.wide-container {
+  width: 492px;
+  display: block;
+}
+
+.spinner-container{
+  width: 492px;
+  height: calc(500px - 48px);
+  display: flex;
+  justify-content: center;
+}
+
+.password-tips{
+  padding-left: 1.5rem;
+  font-size: 14px;
+  display: block;
+  list-style: disc;
+  color:rgba(100, 198, 141, 1);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: 100%;
+
+  & app-button{
+    width: 100%;
+  }
+}
+
+.error-message {
+  color: #ED5252;
+  font-size: 14px;
+}

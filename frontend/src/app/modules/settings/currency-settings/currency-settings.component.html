@@ -1,0 +1,4 @@
+<div class="currency-container" *ngIf="currency$ | async as c">
+  <span>Curency {{c ?? ''}}</span>
+  <a (click)="onCurrencyChange(c ?? '')">Change currency</a>
+</div>

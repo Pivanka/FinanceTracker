@@ -1,0 +1,53 @@
+<div class="registration-page">
+  <app-about-us></app-about-us>
+  <div class="outlet-container">
+    <app-form-container>
+      <h1>Registration</h1>
+      <div class="input-row">
+          <p>First Name</p>
+          <app-input type="text" placeholder="Jane" [control]="getFormControl('firstName')"></app-input>
+          <app-generic-error-message [control]="form.controls['firstName']"></app-generic-error-message>
+      </div>
+      <div class="input-row">
+          <p>Last Name</p>
+          <app-input type="text" placeholder="Smith" [control]="getFormControl('lastName')"></app-input>
+          <app-generic-error-message [control]="form.controls['lastName']"></app-generic-error-message>
+      </div>
+      <div class="input-row">
+          <p>Email</p>
+          <app-input type="text" placeholder="example@domain.com" [control]="getFormControl('email')"></app-input>
+          <app-generic-error-message [control]="form.controls['email']"></app-generic-error-message>
+          <ng-container *ngIf="(errors$ | async) as serverErrors">
+            <app-generic-error-message *ngIf="form?.valid && serverErrors['Email']" [message]="serverErrors['Email'][0]"></app-generic-error-message>
+         </ng-container>
+      </div>
+      <div class="input-row">
+          <p>Create password</p>
+          <app-input type="password" placeholder="Create password" [control]="getFormControl('password')"></app-input>
+          <app-generic-error-message [control]="form.controls['password']"></app-generic-error-message>
+          <ng-container *ngIf="(errors$ | async) as serverErrors">
+            <app-generic-error-message *ngIf="form?.valid && serverErrors['Password']" [message]="serverErrors['Password'][0]"></app-generic-error-message>
+         </ng-container>
+      </div>
+      <ul class="input-row password-tips">
+          <li>
+              Password must be at least 8 characters long
+          </li>
+          <li>
+              English keyboard type
+          </li>
+          <li>
+              Uppercase and lowercase letters
+          </li>
+          <li>
+              Password must include at least 1 number
+          </li>
+      </ul>
+      <app-button class="w-full my-8" [config]="submitCfg"></app-button>
+      <p class="login-suggestion">
+          <span>Already have an account?</span>
+          <a href="/login">Login</a>
+      </p>
+  </app-form-container>
+  </div>
+</div>

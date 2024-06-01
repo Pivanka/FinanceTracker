@@ -1,0 +1,20 @@
+:host{
+  flex: 1;
+}
+
+@keyframes fade-in {
+  0% {
+    outline-color: rgba(13, 153, 255, 0);
+  }
+  100% {
+    outline-color: rgba(13, 153, 255, 1);
+  }
+}
+
+.categories-container{
+  height: calc(428px - 32px);
+}
+
+.spinner-container{
+  z-index: 9999;
+}

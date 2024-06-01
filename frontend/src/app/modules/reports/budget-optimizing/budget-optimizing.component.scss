@@ -1,0 +1,12 @@
+
+.currency__value{
+  background-color: #F2F4F8;
+  color: #AFB4BD;
+  border-radius: 6px 0px 0px 6px;
+  padding: 8px 16px;
+}
+
+:host ::ng-deep .currency input{
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}

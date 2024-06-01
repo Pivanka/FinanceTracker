@@ -1,0 +1,14 @@
+<div class="flex flex-row items-center" *ngIf="transaction">
+  <img *ngIf="transaction.type === 0" src="/assets/images/icons/incomes.svg" class="icon mr-4" alt="icon" width="48" height="48">
+  <img *ngIf="transaction.type === 1" src="/assets/images/icons/expenses.svg" class="icon mr-4" alt="icon" width="48" height="48">
+
+  <div class="transaction-with-date">
+    <span class="font-medium">{{transaction.category.title}}</span>
+    <span class="leading-[20px] text-[#AFB4BD]">{{transaction.date | date:'mediumDate'}}</span>
+  </div>
+
+  <span class="rounded-2xl h-min py-1 px-2 whitespace-nowrap" [ngClass]="transaction.type === 0 ? 'positive' : 'negative'">
+    {{transaction.type === 0 ? '+' : '-'}}
+    {{transaction.amount | number : '.2'}} {{transaction.currency}}
+  </span>
+</div>

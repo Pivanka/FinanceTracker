@@ -1,0 +1,19 @@
+<app-modal-container class="px-6" [maxWidth]="'588px'">
+  <app-modal-title [text]="'Document scan is complete!'"></app-modal-title>
+  <div class="text-grey-2 pt-4 pb-8">
+    We have successfully uploaded {{data.count}} transactions.
+    Please note that they have not been categorized yet.
+    You can choose to categorize them now manually or assign default categories to them.
+    Feel free to manage and review your transactions at your convenience.
+    If you want to approve, please choose account.
+  </div>
+  <div class="mb-4">
+    <p class="text">Account</p>
+    <app-dropdown class="w-20"  [formControl]="getFormControl('account')"
+      [items]="(accounts$ | async)!"></app-dropdown>
+  </div>
+  <div class="pt-4 px-6 flex justify-center gap-4">
+    <app-button variant="decline" [config]="data.outlinedButton" class="flex-1"></app-button>
+    <app-button [config]="primaryButton" class="flex-1"></app-button>
+  </div>
+</app-modal-container>

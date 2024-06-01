@@ -1,0 +1,56 @@
+<app-modal-container class="px-6" [minWidth]="'588px'">
+  <app-modal-title text="Create a new Category"></app-modal-title>
+  <div mat-dialog-content>
+    <div class="mb-4">
+      <app-input
+        label="Title"
+        placeholder="Title"
+        type="text"
+        [control]="getFormControl('title')">
+      </app-input>
+      <ng-container *ngIf="(serverErrors$ | async) as serverErrors">
+        <app-generic-error-message *ngIf="form?.valid && serverErrors['Title']" [message]="serverErrors['Title'][0]"></app-generic-error-message>
+     </ng-container>
+      <app-generic-error-message [control]="getFormControl('title')"></app-generic-error-message>
+    </div>
+    <div class="mb-4">
+      <p class="text">Type</p>
+      <app-dropdown class="w-20" [formControl]="getFormControl('type')"
+        [items]="['Expense', 'Income']"></app-dropdown>
+    </div>
+    <div class="mb-4 color-picker-container">
+      <p class="text">Choose a color</p>
+      <input class="cursor-pointer" type="color" [(ngModel)]="color">
+    </div>
+    <div class="mb-4">
+      <p class="text">Choose or Upload Icon</p>
+
+      <div class="flex flex-row items-center">
+        <div class="preview">
+          <div [style.background-image]='getImage()'> </div>
+        </div>
+
+        <div class="flex flex-row justify-between w-full">
+          <div class="cursor-pointer">
+            <a class="ml-6 text-grey-3" (click)="uploadPhoto.click()">Upload photo</a>
+            <input type="file" #uploadPhoto [hidden]="true" (change)="onFileChange($event)" accept="image/jpg, image/jpeg, image/png">
+          </div>
+
+          <div class="flex flex-row cursor-pointer" (click)="remove()" *ngIf="selectedImage">
+            <img src="assets/images/icons/delete_icon.svg" alt="delete">
+            <span class="additional-info ml-3">Remove photo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-modal-actions-container>
+    <app-button
+      type="submit"
+      [disabled]="!isValid()"
+      text="Add"
+      [classList]="['w-[155px]']"
+      (onClick)="onSubmit()">
+    </app-button>
+  </app-modal-actions-container>
+</app-modal-container>

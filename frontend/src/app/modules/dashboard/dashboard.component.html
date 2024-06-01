@@ -1,0 +1,22 @@
+<app-header
+  [title]="'Dashboard'"
+  [icon]="'assets/images/icons/dashboard.svg'"></app-header>
+
+<div class="flex flex-row">
+  <div class="w-full">
+
+    <app-balance></app-balance>
+
+    <div class="flex flex-row flex-wrap">
+
+      <div class="mt-8 w-full md:w-1/2 md:pr-4">
+        <app-transactions></app-transactions>
+      </div>
+
+      <div class="mt-8 w-full md:w-1/2">
+        <app-notifications></app-notifications>
+      </div>
+
+    </div>
+  </div>
+</div>

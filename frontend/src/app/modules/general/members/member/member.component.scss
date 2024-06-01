@@ -1,0 +1,31 @@
+.preview{
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.preview > div{
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.choose
+{
+  color: deepskyblue;
+  display: flex;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.role-and-arrow
+{
+  display: flex;
+  color:#64C68D;
+  //styleName: Body text;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+}

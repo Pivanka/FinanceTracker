@@ -1,0 +1,82 @@
+<nav class="menu__container px-8 h-full py-12 md:left-0 md:block md:top-0 md:bottom-0 overflow-hidden bg-white flex flex-wrap items-center justify-between">
+  <div class="px-4">
+    <div class="pb-12">
+      <img src="assets/images/icons/Logo.svg" alt="Logo">
+    </div>
+    <ul class="menu__links">
+      <li>
+        <app-menu-link [route]="'/dashboard'"
+          [options]="true"
+          [linkTitle] = "'Dashboard'"
+          [iconDefault]="'assets/images/icons/dashboard.svg'"
+          [iconBlue]="'assets/images/icons/dashboard_blue_icon.svg'"
+          [isNotificationTab] = "true"
+          [isUnreadNotification] = "isNotificationReceived"
+          ></app-menu-link>
+      </li>
+      <li>
+        <app-menu-link [route]="'/transactions'"
+          [options]="false"
+          [linkTitle] = "'Transactions'"
+          [iconDefault]="'assets/images/icons/transactions.svg'"
+          [iconBlue]="'assets/images/icons/transactions_blue_icon.svg'"
+          ></app-menu-link>
+      </li>
+      <li>
+        <app-menu-link [route]="'/reports/income'"
+          [options]="false"
+          [linkTitle] = "'Reports'"
+          [iconDefault]="'assets/images/icons/report_icon.svg'"
+          [iconBlue]="'assets/images/icons/report_blue_icon.svg'"
+          ></app-menu-link>
+      </li>
+    </ul>
+  </div>
+  <hr class="mt-6">
+  <div class="px-4 pb-12 mt-12">
+    <div class="flex flex-col" *ngIf="(profile$ | async) as vm; else loading">
+      <div class="account__icon preview w-10 h-10 rounded-full flex items-center justify-center mb-2">
+        <img [src]="vm.avatar ?? 'assets/images/icons/avatar.svg'" alt="">
+      </div>
+      <div class="text-base font-medium mb-2">
+        {{vm.firstName}} {{vm.lastName}}
+      </div>
+      <div class="text-sm mb-6">
+        {{vm.email}}
+      </div>
+    </div>
+    <ul class="menu__links">
+        <li>
+          <app-menu-link [route]="'/general'"
+              [options]="false"
+              [linkTitle] = "'General'"
+              [iconDefault]="'assets/images/icons/general_icon.svg'"
+              [iconBlue]="'assets/images/icons/general_blue_icon.svg'"
+          ></app-menu-link>
+        </li>
+        <li>
+          <app-menu-link [route]="'/settings'"
+              [options]="false"
+              [linkTitle] = "'Settings'"
+              [iconDefault]="'assets/images/icons/settings_icon.svg'"
+              [iconBlue]="'assets/images/icons/settings_blue_icon.svg'"
+          ></app-menu-link>
+        </li>
+        <li>
+          <app-menu-link
+              (linkClicked)="logout()"
+              [options]="true"
+              [linkTitle] = "'Logout'"
+              [iconDefault]="'assets/images/icons/logout_icon.svg'"
+              [iconBlue]="'assets/images/icons/logout_blue_icon.svg'"
+          ></app-menu-link>
+        </li>
+      </ul>
+  </div>
+</nav>
+
+<ng-template #loading>
+  <div class="rounded-xl pb-8 bg-white mt-3">
+    <app-placeholder [lines]="1" [baseInterval]="0" [flexOption]="'col'"></app-placeholder>
+  </div>
+</ng-template>

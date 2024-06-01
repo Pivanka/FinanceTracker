@@ -1,0 +1,68 @@
+.circle {
+  width: 40px;
+  height: 40px;
+  background: #F2F4F8;
+  border-radius: 50%;
+}
+
+.long-line {
+  background: #F2F4F8;
+  border-radius: 12px;
+  height: 24px;
+}
+
+.line {
+  background: #F2F4F8;
+  border-radius: 12px;
+  width: 100%;
+  height: 24px;
+}
+
+.small-line {
+  animation: 3s show ease;
+}
+
+@media (min-width: 768px) {
+  .col-small-line{
+    width: calc( ((2 * 100% + 2 * 32px + 16px) / 3) - 1.5rem / 3);
+  }
+  .col{
+    width: calc( ((2 * 100% + 2 * 32px + 32px) / 3) + 36px + 1.5rem / 3) !important;
+  }
+  .long-line{
+    width: calc(100% / 3 + 36px + 1.5rem / 3);
+  }
+}
+
+.load-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(229, 232, 236);
+  overflow: hidden;
+  border-radius:inherit;
+}
+
+.activity {
+  position: absolute;
+  left: -45%;
+  height: 100%;
+  width: 45%;
+  background-image: linear-gradient(to left, rgba(251,251,251, .05), rgba(251,251,251, .3), rgba(251,251,251, .6),
+    rgba(251,251,251, .3), rgba(251,251,251, .05));
+  animation: loading 1s infinite;
+}
+
+@keyframes show {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes loading {
+  0% {
+    left: -45%;
+  }
+  100% {
+    left: 100%;
+  }
+}

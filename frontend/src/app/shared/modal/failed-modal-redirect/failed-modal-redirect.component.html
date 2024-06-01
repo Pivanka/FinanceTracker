@@ -1,0 +1,8 @@
+<app-modal-container class="px-6" [maxWidth]="'450px'">
+  <app-modal-failed></app-modal-failed>
+  <app-modal-actions-container>
+    <app-button [text]="data.primaryButton.label" variant="standard"
+    [mat-dialog-close]
+    [routerLink]="data.primaryButton.route"></app-button>
+  </app-modal-actions-container>
+</app-modal-container>

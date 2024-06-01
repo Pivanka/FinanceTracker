@@ -1,0 +1,36 @@
+p.info{
+  margin-left: calc(52px + 1.75rem);
+}
+
+.info {
+  line-height: 20px;
+  color: #AFB4BD;
+}
+
+
+.notification-text {
+  flex-grow: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.notification-text a {
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration-line: underline;
+  color: #0D99FF;
+}
+.icon{
+  box-shadow: 0 5.05263px 12.6316px rgba(128, 141, 163, 0.16);
+}
+
+.transaction-with-date {
+  flex: 1;
+  min-width: 0;
+  span {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
