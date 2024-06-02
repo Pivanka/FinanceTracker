@@ -17,7 +17,7 @@ public class ReportTests : BaseTestFixture
     {
         //Arrange
         var requestModel = new GetChartRequestModel(TransactionType.Expense, DateTime.UtcNow.ToLongDateString(),
-            DateTime.UtcNow.AddDays(-1).ToLongDateString());
+            DateTime.UtcNow.AddDays(-1).ToLongDateString(), "");
         var token = await GetToken();
         
         //Act
@@ -63,7 +63,7 @@ public class ReportTests : BaseTestFixture
         await unitOfWork.SaveChanges(Ct);
         
         var requestModel = new GetChartRequestModel(TransactionType.Expense, DateTime.UtcNow.AddMonths(-3).ToLongDateString(),
-            DateTime.UtcNow.AddMonths(-1).ToLongDateString());
+            DateTime.UtcNow.AddMonths(-1).ToLongDateString(), "");
         
         var token = await GetToken();
         
@@ -108,8 +108,6 @@ public class ReportTests : BaseTestFixture
         result!.Result.Should().NotBeNullOrEmpty();
         
         optimizerMock.Verify(x => x.Optimize(It.IsAny<double>(),
-            It.IsAny<List<string>>(),
-            It.IsAny<List<double>>(),
-            It.IsAny<List<RequirementItem>>()), Times.Once);
+            It.IsAny<List<CategoryInfo>>()), Times.Once);
     }
 }

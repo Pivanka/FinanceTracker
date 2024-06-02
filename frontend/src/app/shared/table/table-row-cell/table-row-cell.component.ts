@@ -27,13 +27,13 @@ export class TableRowCellComponent implements OnInit {
   isRadio: boolean = false;
   isMenu: boolean = false;
   isDate: boolean = false;
-  isInvoice=false;
+  isNumber=false;
   status: string | number = '';
   constructor() { }
 
   ngOnInit(): void {
     this.isCheckBox = (this.cell.rowType === TableRowCellType.CheckBox);
-    this.isInvoice = (this.cell.rowType === TableRowCellType.Invoice);
+    this.isNumber = (this.cell.rowType === TableRowCellType.Number);
     this.isNone = (this.cell.rowType === TableRowCellType.None);
     this.isStatus = (this.cell.rowType === TableRowCellType.Status);
     this.isTwoFlors = (this.cell.rowType === TableRowCellType.TwoFlors);

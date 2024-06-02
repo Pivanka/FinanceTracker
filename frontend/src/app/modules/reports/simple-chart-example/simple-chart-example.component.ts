@@ -61,7 +61,7 @@ export class SimpleChartExampleComponent implements OnInit, OnChanges {
         title: {
           verticalAlign: 'middle',
           floating: true,
-          text: type + ` ${this.totalAmount} ${this.simpleChart.currency}`,
+          text: type + ` ${Math.round(this.totalAmount)} ${this.simpleChart.currency}`,
           style: {
               color: color,
           }

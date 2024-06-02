@@ -30,6 +30,18 @@ li {
   color: #0D99FF;
 }
 
+.payment-method {
+  box-shadow: 0 4px 18px rgba(173, 184, 202, 0.16);
+  border-radius: 8px;
+
+  &:hover{
+    box-shadow: 0 4px 18px rgba(103, 116, 137, 0.16);
+  }
+}
+
+.payment-icon {
+  border-radius: 6px;
+}
 
 .company-name,
 .selected-company-name {
@@ -46,14 +58,4 @@ li {
 
 .selected-company-name {
   color: #0D99FF
-}
-
-.counter {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  color: #898E96;
-  width: 110%;
 }

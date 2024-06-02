@@ -60,7 +60,7 @@
       <div *ngFor="let item of vm.result" class="ml-2">
         {{item.category}} - {{item.amount | number: '1.0-0'}} {{(currency$ | async) ?? 'UAH'}}
       </div>
-      <div *ngIf="vm.result?.length === 0" class="empty-invoices-container">
+      <div *ngIf="vm.result?.length === 0" class="empty-container">
         <div>
           <app-empty-state message="You have no transactions to create optimization. Let’s use FinTrack."></app-empty-state>
         </div>

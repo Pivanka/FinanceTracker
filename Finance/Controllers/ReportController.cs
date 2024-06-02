@@ -13,7 +13,7 @@ public class ReportController(IMediator mediator) : BaseController
     [HttpPost]
     public async Task<IActionResult> GetChart([FromBody] GetChartRequestModel request, CancellationToken cancellationToken)
     {
-        return Ok(await mediator.Send(new GetChartQuery(UserId, request.Type, request.From, request.To), cancellationToken));
+        return Ok(await mediator.Send(new GetChartQuery(UserId, request.Type, request.From, request.To, request.AccountId), cancellationToken));
     }
     
     [HttpPost("optimizing")]

@@ -19,6 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ChartModule } from 'angular-highcharts';
 import { BudgetOptimizingComponent } from './budget-optimizing/budget-optimizing.component';
 import { TransactionsModule } from '../transactions/transactions.module';
+import { AccountDropdownComponent } from './account-dropdown/account-dropdown.component';
 
 const routes: Routes = [
   {
@@ -62,7 +63,8 @@ const routes: Routes = [
     ExpencesReportsComponent,
     SimpleChartExampleComponent,
     DateItemComponent,
-    BudgetOptimizingComponent
+    BudgetOptimizingComponent,
+    AccountDropdownComponent
   ],
   providers: [
     provideMomentDateAdapter(MY_FORMATS),

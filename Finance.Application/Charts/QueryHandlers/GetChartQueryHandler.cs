@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Finance.Application.Charts.QueryHandlers;
 
-public record GetChartQuery(int UserId, TransactionType Type, string? From, string? To) : IRequest<SimpleChart>;
+public record GetChartQuery(int UserId, TransactionType Type, string? From, string? To, string? AccountId) : IRequest<SimpleChart>;
 
 public class GetChartQueryHandler(IUnitOfWork unitOfWork,
     IExchangeRateCalculator exchangeRateCalculator,
@@ -37,6 +37,11 @@ public class GetChartQueryHandler(IUnitOfWork unitOfWork,
         if (request.To is not null)
         {
             transactionsQuery = transactionsQuery.Where(x => x.Date <= DateTime.Parse(request.To).ToUniversalTime());
+        }
+        
+        if (!string.IsNullOrEmpty(request.AccountId))
+        {
+            transactionsQuery = transactionsQuery.Where(x => x.AccountId == Convert.ToInt32(request.AccountId));
         }
         
         var transactions = await transactionsQuery.ToListAsync(cancellationToken);

@@ -34,6 +34,7 @@ export class ExpencesReportsComponent implements OnInit {
 
   chart$?:Observable<SimpleChart | null>
   isLoading$?:Observable<boolean>
+  selectedDate!: DateItemModel;
   constructor(private store: Store<AppState>) { }
 
   currentWeek!: {to:Date, from: Date};
@@ -42,6 +43,11 @@ export class ExpencesReportsComponent implements OnInit {
       to: new Date(),
       from: this.getStartOfWeek()
     };
+    this.selectedDate = {
+      to: this.currentWeek.to,
+      from: this.currentWeek.from,
+      title: "selected"
+    }
     this.dates = [
       {
         title: 'Current week',
@@ -62,7 +68,7 @@ export class ExpencesReportsComponent implements OnInit {
         title: 'All time'
       }
     ]
-    this.store.dispatch(loadChart({transactionType: TransactionType.Expense, to: this.currentWeek.to.toISOString(), from: this.currentWeek.from.toISOString()}))
+    this.store.dispatch(loadChart({transactionType: TransactionType.Expense, to: this.currentWeek.to.toISOString(), from: this.currentWeek.from.toISOString(), accountId: this.selectedAccount}))
     this.chart$ = this.store.select(selectChart);
     this.isLoading$ = this.store.select(isSpinnerShowing);
   }
@@ -76,10 +82,6 @@ export class ExpencesReportsComponent implements OnInit {
 
   getStartOfWeek() {
     const today = new Date();
-    const currentDay = today.getDay();
-    const startOfWeek = new Date(today);
-    startOfWeek.setDate(startOfWeek.getDate() - currentDay);
-
     return this.getMonday(today);
   }
 
@@ -92,14 +94,30 @@ export class ExpencesReportsComponent implements OnInit {
   }
 
   customDate!: { start?: Date, end?: Date };
+  selectedAccount?: string;
   onDateChange(event: MatDatepickerInputEvent<Date>) {
     if(this.range.value.end !== null && this.range.value.start !== null) {
-      this.store.dispatch(loadChart({transactionType: TransactionType.Expense, to: this.range.value.end!.toISOString(), from: this.range.value.start!.toISOString()}));
+      this.selectedDate = {
+        to: this.range.value.end,
+        from: this.range.value.start,
+        title: "selected"
+      }
+      this.store.dispatch(loadChart({transactionType: TransactionType.Expense, to: this.selectedDate.to?.toISOString(), from: this.selectedDate.from?.toISOString(), accountId: this.selectedAccount}));
     }
   }
 
   onClick(item: DateItemModel){
-    this.store.dispatch(loadChart({transactionType: TransactionType.Expense, to: item.to?.toISOString(), from: item.from?.toISOString()}));
+    this.selectedDate = {
+      to: item.to,
+      from: item.from,
+      title: "selected"
+    }
+    this.store.dispatch(loadChart({transactionType: TransactionType.Expense, to: item.to?.toISOString(), from: item.from?.toISOString(), accountId: this.selectedAccount}));
+  }
+
+  loadChartWithAccount(event: string){
+    this.selectedAccount = event;
+    this.store.dispatch(loadChart({transactionType: TransactionType.Expense, to: this.selectedDate.to?.toISOString(), from: this.selectedDate.from?.toISOString(), accountId: this.selectedAccount}));
   }
 }
 

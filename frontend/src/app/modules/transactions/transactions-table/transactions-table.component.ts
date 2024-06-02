@@ -104,7 +104,7 @@ export class TransactionsTableComponent implements OnInit {
         sortName: 'id',
         text: "Number",
         width: '102px',
-        rowType: TableRowCellType.Invoice,
+        rowType: TableRowCellType.Number,
         rowDataName: ['id']
       },
       {

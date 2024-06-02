@@ -63,44 +63,21 @@ export class AddTransactionModalComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    if(this.amount$){
-      this.subscription = this.amount$?.subscribe(amount => {
+    var result: AddTransaction = {
+      note: this.transactionForm.controls['notes'].value,
+      type: this.transactionForm.controls['type'].value === 'Expense' ? TransactionType.Expense : TransactionType.Income,
+      amount: this.transactionForm.controls['amount'].value,
+      currency: this.transactionForm.controls['currency'].value.currency,
+      accountId: this.transactionForm.controls['account'].value.id,
+      exchangeRate: 1
+    };
 
-        var result: AddTransaction = {
-          note: this.transactionForm.controls['notes'].value,
-          type: this.transactionForm.controls['type'].value === 'Expense' ? TransactionType.Expense : TransactionType.Income,
-          amount: this.transactionForm.controls['amount'].value,
-          currency: this.transactionForm.controls['currency'].value.currency,
-          accountId: this.transactionForm.controls['account'].value.id,
-          exchangeRate: amount?.exchangeRate
-        };
-
-        if(this.transactionForm.controls['category'].value.teamId > 0) {
-          result.customCategoryId = this.transactionForm.controls['category'].value.id;
-        } else {
-          result.categoryId = this.transactionForm.controls['category'].value.id
-        }
-
-        console.log(result);
-        this.store.dispatch(addTransaction({ transaction: result }));
-      });
+    if(this.transactionForm.controls['category'].value.teamId > 0) {
+      result.customCategoryId = this.transactionForm.controls['category'].value.id;
     } else {
-      var result: AddTransaction = {
-        note: this.transactionForm.controls['notes'].value,
-        type: this.transactionForm.controls['type'].value === 'Expense' ? TransactionType.Expense : TransactionType.Income,
-        amount: this.transactionForm.controls['amount'].value,
-        currency: this.transactionForm.controls['currency'].value.currency,
-        accountId: this.transactionForm.controls['account'].value.id,
-        exchangeRate: 1
-      };
-
-      if(this.transactionForm.controls['category'].value.teamId > 0) {
-        result.customCategoryId = this.transactionForm.controls['category'].value.id;
-      } else {
-        result.categoryId = this.transactionForm.controls['category'].value.id
-      }
-      this.store.dispatch(addTransaction({ transaction: result }));
+      result.categoryId = this.transactionForm.controls['category'].value.id
     }
+    this.store.dispatch(addTransaction({ transaction: result }));
   }
 
   getFormControl(controlName: string): FormControl {

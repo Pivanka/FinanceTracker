@@ -20,7 +20,9 @@ public record AddTransactionCommand() : IRequest
     public DateTime? Date { get; init; }
 }
 
-public class AddTransactionCommandHandler(IUnitOfWork unitOfWork, ITeamMemberNotificationSender notificationSender)
+public class AddTransactionCommandHandler(IUnitOfWork unitOfWork,
+    ITeamMemberNotificationSender notificationSender,
+    IExchangeRateCalculator exchangeRateCalculator, ICurrencyService currencyService)
     : IRequestHandler<AddTransactionCommand>
 {
     public async Task<Unit> Handle(AddTransactionCommand request, CancellationToken cancellationToken)
@@ -47,8 +49,14 @@ public class AddTransactionCommandHandler(IUnitOfWork unitOfWork, ITeamMemberNot
             Currency = request.Currency,
             Note = request.Note,
             Type = request.Type,
-            ExchangeRate = request.ExchangeRate ?? 1
+            ExchangeRate = 1
         };
+
+        if (account.Currency != request.Currency)
+        {
+            var rates = await currencyService.GetCurrencyRates(cancellationToken);
+            newTransaction.ExchangeRate = exchangeRateCalculator.Calculate(account.Currency, request.Currency, rates);
+        }
 
         await unitOfWork.TransactionRepository.Add(newTransaction, cancellationToken);
         await unitOfWork.SaveChanges(cancellationToken);

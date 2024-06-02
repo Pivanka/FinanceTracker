@@ -34,7 +34,7 @@ export enum TableRowCellType{
   Status,
   Radio,
   Menu,
-Invoice,
+  Number,
   Date
 }
 

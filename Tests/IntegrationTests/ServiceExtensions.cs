@@ -66,9 +66,7 @@ public static class ServiceExtensions
             .AddSingleton(mock);
 
         mock.Setup(x => x.Optimize(It.IsAny<double>(),
-                It.IsAny<List<string>>(),
-                It.IsAny<List<double>>(),
-                It.IsAny<List<RequirementItem>>()
+                It.IsAny<List<CategoryInfo>>()
             ))
             .Returns(new Dictionary<string, double>
             {

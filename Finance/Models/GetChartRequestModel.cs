@@ -2,4 +2,4 @@
 
 namespace Finance.Models;
 
-public record GetChartRequestModel(TransactionType Type, string? From, string? To);
+public record GetChartRequestModel(TransactionType Type, string? From, string? To, string? AccountId);

@@ -17,10 +17,10 @@
   </div>
 </app-transactions-table-wrapper>
 
-<div *ngIf="(isEmpty | async) && !(isLoading | async)" class="empty-invoices-container">
+<div *ngIf="(isEmpty | async) && !(isLoading | async)" class="empty-container">
   <div>
     <app-empty-state message="You have no transactions. Let’s create one."></app-empty-state>
-    <div class="empty-invoices__buttons">
+    <div class="empty-buttons">
       <app-button *ngIf="secondaryButton" [config]="secondaryButton" variant="outlined"></app-button>
       <app-button *ngIf="primaryButton" [config]="primaryButton"></app-button>
     </div>

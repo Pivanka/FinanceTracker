@@ -12,7 +12,7 @@ export class ReportsEffects {
     return this.actions$.pipe(
       ofType(ReportsActions.loadChart),
       mergeMap((action) =>
-        this.service.post<SimpleChart>('/api/report', {type: action.transactionType, to: action.to, from: action.from}).pipe(
+        this.service.post<SimpleChart>('/api/report', {type: action.transactionType, to: action.to, from: action.from, accountId: action.accountId}).pipe(
         map((data) =>
           ReportsActions.loadChartSuccess({ result: data })
         ),

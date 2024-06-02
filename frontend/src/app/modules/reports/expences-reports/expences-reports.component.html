@@ -13,6 +13,7 @@
     </div>
   </div>
   <div class="flex flex-col">
+    <app-account-dropdown (selectedAccount)="loadChartWithAccount($event)"></app-account-dropdown>
     <div *ngFor="let item of dates">
       <app-date-item [model]="item" class="w-full cursor-pointer" (click)="onClick(item)"></app-date-item>
     </div>

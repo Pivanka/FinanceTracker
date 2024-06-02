@@ -56,7 +56,7 @@ export const reducer = createReducer(
   on(TransactionsActions.setLoading, (state, action) => {
     return {
       ...state,
-      invoicesLoading: action.loading
+      transactionsLoading: action.loading
     };
   }),
   on(TransactionsActions.addTransactionFailure, (state, action) => {

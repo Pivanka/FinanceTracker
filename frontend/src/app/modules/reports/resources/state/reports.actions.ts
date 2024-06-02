@@ -6,7 +6,7 @@ import { OptimizeBudgetRequest, OptimizeBudgetResult } from '../models/optimizin
 // load chart
 export const loadChart = createAction(
   '[Reports Component] Load Chart',
-  props<{ transactionType: TransactionType, from: string | undefined, to: string | undefined}>()
+  props<{ transactionType: TransactionType, from: string | undefined, to: string | undefined, accountId: string | undefined}>()
 );
 
 export const loadChartSuccess = createAction(

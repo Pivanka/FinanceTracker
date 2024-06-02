@@ -1,4 +1,5 @@
-<div class="w-full relative box-border" style="background-color: white;">
+<div class="w-full relative box-border payment-method"
+  *ngIf="accounts$ | async as model" style="background-color: white;">
   <button type="button" (click)="openSelectList()" class="dropdown w-full cursor-pointer py-1.5 pl-2 pr-10 text-left">
     <div class="flex items-center">
       <span class="change__text font-normal ml-3 block">{{value}}</span>
@@ -17,13 +18,10 @@
                 'selected-company-name' : 'company-name'">
               All accounts
             </span>
-            <p class="counter">
-              {{calculate(accountsInfo$|async)}} transactions
-            </p>
           </div>
         </div>
       </div>
-      <div class="cursor-pointer select-none flex" *ngFor="let item of accountsInfo$ | async"
+      <div class="cursor-pointer select-none flex" *ngFor="let item of model"
         (click)="updateList(item)">
         <div class="flex items-center m-4 w-full" [ngClass]="keyEqual(item) ? 'selected' : ''">
           <div>
@@ -35,9 +33,6 @@
                 'selected-company-name' : 'company-name'">
               {{getName(item)}}
             </span>
-            <p class="counter">
-              {{item.transactionsCount}} transactions
-            </p>
           </div>
         </div>
       </div>
