@@ -1,7 +1,7 @@
 <div class="flex flex-col items-start h-full w-full overflow-hidden">
   <div class="header">
     <h3>Optimize your budget!</h3>
-    <p class="text-grey-2">You can add you preferences of categories allocation or service can do it from you last three months.</p>
+    <p class="text-grey-2">You can add you preferences of categories allocation or service can do it from you last two months.</p>
   </div>
   <div class="h-full flex flex-row overflow-hidden">
     <div class="h-full">
@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="pt-4 w-80 flex-1 pr-4 overflow-y-auto">
-          <div formArrayName="items">
+          <div formArrayName="items" *ngIf="items?.length !== 0">
             <div *ngFor="let item of items?.controls; let i=index" [formGroupName]="i">
               <div class="flex justify-between">
                 <h3>Requirement {{i+1}}</h3>
@@ -34,21 +34,17 @@
                 </div>
                 <div class="my-4">
                   <p class="text">Amount</p>
-                  <div class="flex items-center justify-between">
+                  <div class="flex flex-col items-center justify-between">
                     <div class="w-full flex">
-                      <app-dropdown [items]="['min', 'max']" [formControl]="$any(items).controls[i].get('type')!"></app-dropdown>
-                      <app-input class="w-full" placeholder="00.00" [type]="'text'"
-                        [control]="$any(items).controls[i].get('amount')!"></app-input>
+                      <div class="currency__value w-20">min</div>
+                      <app-input class="w-full" placeholder="00.00" [type]="'number'"
+                        [control]="$any(items).controls[i].get('maxAmount')!"></app-input>
                     </div>
-                    <div
-                      *ngIf="$any(items).controls[i].get('amount').hasError('pattern') && $any(items).controls[i].get('amount').touched"
-                      class="error-message w-full help-text">
-                      wrong format
-                    </div>
-                    <div
-                      *ngIf="$any(items).controls[i].get('amount').hasError('required') && $any(items).controls[i].get('amount').touched"
-                      class="error-message w-full help-text">
-                      required
+                    <div class="pt-2 w-full flex">
+                      <!-- <app-dropdown [items]="['max']" [formControl]="$any(items).controls[i].get('type')!"></app-dropdown> -->
+                      <div class="currency__value w-20">max</div>
+                      <app-input class="w-full" placeholder="00.00" [type]="'number'"
+                        [control]="$any(items).controls[i].get('minAmount')!"></app-input>
                     </div>
                   </div>
                 </div>
@@ -61,8 +57,18 @@
       <app-button [config]="submitButtonConfig"></app-button>
     </div>
     <div *ngIf="(optimizedBudget$ | async) as vm">
-      <div *ngFor="let item of vm.result">
-        {{item.category}} - {{item.amount | number}} {{(currency$ | async) ?? 'UAH'}}
+      <div *ngFor="let item of vm.result" class="ml-2">
+        {{item.category}} - {{item.amount | number: '1.0-0'}} {{(currency$ | async) ?? 'UAH'}}
+      </div>
+      <div *ngIf="vm.result?.length === 0" class="empty-invoices-container">
+        <div>
+          <app-empty-state message="You have no transactions to create optimization. Let’s use FinTrack."></app-empty-state>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="(error$ | async) !== null">
+      <div>
+        <app-empty-state message="Something went wrong. You can try setting a higher budget or adding more wishes by category. Or you don't have enough historical data to optimize."></app-empty-state>
       </div>
     </div>
   </div>

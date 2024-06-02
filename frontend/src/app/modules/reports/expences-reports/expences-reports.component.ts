@@ -80,7 +80,15 @@ export class ExpencesReportsComponent implements OnInit {
     const startOfWeek = new Date(today);
     startOfWeek.setDate(startOfWeek.getDate() - currentDay);
 
-    return startOfWeek;
+    return this.getMonday(today);
+  }
+
+  getMonday(d: Date): Date {
+    const date = new Date(d);
+    const day = date.getDay();
+    const diff = date.getDate() - day + (day === 0 ? -6 : 1);
+
+    return new Date(date.setDate(diff));
   }
 
   customDate!: { start?: Date, end?: Date };

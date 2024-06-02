@@ -32,11 +32,11 @@ public class GetChartQueryHandler(IUnitOfWork unitOfWork,
 
         if (request.From is not null)
         {
-            transactionsQuery = transactionsQuery.Where(x => x.Date > DateTime.Parse(request.From));
+            transactionsQuery = transactionsQuery.Where(x => x.Date > DateTime.Parse(request.From).ToUniversalTime());
         }
         if (request.To is not null)
         {
-            transactionsQuery = transactionsQuery.Where(x => x.Date <= DateTime.Parse(request.To));
+            transactionsQuery = transactionsQuery.Where(x => x.Date <= DateTime.Parse(request.To).ToUniversalTime());
         }
         
         var transactions = await transactionsQuery.ToListAsync(cancellationToken);

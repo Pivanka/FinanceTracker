@@ -39,7 +39,7 @@ public class GetBalanceQueryHandler(IUnitOfWork unitOfWork,
         var startOfMonth = new DateTime(today.Year, today.Month, 1);
         var transactions = await unitOfWork.TransactionRepository
             .Query()
-            .Where(x => accounts.Contains(x.AccountId) && x.Date >= startOfMonth)
+            .Where(x => accounts.Contains(x.AccountId) && x.Date >= startOfMonth.ToUniversalTime())
             .ToListAsync(cancellationToken);
         
         var rates = await currencyService.GetCurrencyRates(cancellationToken);

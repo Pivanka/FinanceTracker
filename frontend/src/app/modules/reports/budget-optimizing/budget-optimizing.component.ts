@@ -10,14 +10,14 @@ import { Category, CustomCategory } from '../../transactions/resources/models/ca
 import { showCategoriesSelector, showCustomCategoriesSelector } from '../../transactions/resources/state/transactions.selector';
 import { TransactionType } from '../../dashboard/resources/models/transaction';
 import { getCategories, getCustomCategories } from '../../transactions/resources/state/transactions.actions';
-import { OptimizeBudgetRequest, OptimizeBudgetResult, OptimizeRequestItem, RequirementType } from '../resources/models/optimizing-budget';
+import { OptimizeBudgetRequest, OptimizeBudgetResult, OptimizeRequestItem } from '../resources/models/optimizing-budget';
 import { optimizeBudget } from '../resources/state/reports.actions';
-import { selectOptimizingChart } from '../resources/state/reports.selectors';
+import { selectError, selectOptimizingChart } from '../resources/state/reports.selectors';
 
 export interface RequirementItem {
   category: any,
-  amount: number,
-  type: string
+  maxAmount: number,
+  minAmount: number,
 }
 
 @Component({
@@ -36,8 +36,12 @@ export class BudgetOptimizingComponent implements OnInit {
   form!: FormGroup;
   budget!: FormControl;
   optimizedBudget$!: Observable<OptimizeBudgetResult | null>;
+  error$!: Observable<any | null>;
+Math: any;
 
-  constructor(private store: Store<AppState>, private fb: FormBuilder) { }
+  constructor(private store: Store<AppState>, private fb: FormBuilder) {
+    this.error$ = store.select(selectError);
+  }
 
   ngOnInit() {
     this.store.dispatch(getCurrency());
@@ -57,9 +61,7 @@ export class BudgetOptimizingComponent implements OnInit {
 
   createFormControls() {
     this.budget = new FormControl(null, [Validators.required, Validators.pattern('^[1-9]\\d*(\\.\\d+)?$')]);
-    this.items = new FormArray([
-      this.addItemFormGroup()
-    ])
+    this.items = this.fb.array([])
   }
 
   createForm() {
@@ -76,8 +78,8 @@ export class BudgetOptimizingComponent implements OnInit {
   addItemFormGroup(item: any | undefined = undefined): FormGroup {
     const group = this.fb.group({
       category: new FormControl(item?.category ?? '', Validators.required),
-      type: new FormControl(item?.type ?? 'min', Validators.required),
-      amount: new FormControl(item?.amount?.toString() ?? '', [Validators.required, Validators.pattern('^[1-9]\\d*(\\.\\d+)?$')]),
+      maxAmount: new FormControl(item?.maxAmount ?? null, [Validators.pattern('^[1-9]\\d*(\\.\\d+)?$')]),
+      minAmount: new FormControl(item?.maxAmount ?? null, [Validators.pattern('^[1-9]\\d*(\\.\\d+)?$')]),
     });
     return group;
   }
@@ -89,14 +91,13 @@ export class BudgetOptimizingComponent implements OnInit {
   onSubmit() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
-      console.log(this.form)
       return;
     }
 
     const resultItems : OptimizeRequestItem[] = this.items!.value.map((item: RequirementItem) => {
       let newItem: OptimizeRequestItem = {
-        amount: item.amount,
-        type: item.type === 'min' ? RequirementType.Min : RequirementType.Max
+        maxAmount: item.maxAmount,
+        minAmount: item.minAmount,
       }
 
       if(item.category.teamId > 0) {
@@ -114,8 +115,6 @@ export class BudgetOptimizingComponent implements OnInit {
     }
 
     console.log(result)
-
     this.store.dispatch(optimizeBudget({ request: result }));
   }
-
 }

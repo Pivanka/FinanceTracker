@@ -16,8 +16,12 @@ export const selectIsLoading = createSelector(
   state => state.isLoading
 );
 
-
 export const selectOptimizingChart = createSelector(
   selectReportsState,
   state => state.optimizingChart
+);
+
+export const selectError = createSelector(
+  selectReportsState,
+  state => state.error
 );

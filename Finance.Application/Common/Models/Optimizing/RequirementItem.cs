@@ -3,6 +3,7 @@
 public class RequirementItem
 {
     public string CategoryTitle { get; set; } = null!;
-    public decimal Amount { get; set; }
-    public RequirementType Type { get; set; }
+    
+    public decimal? MinAmount { get; set; }
+    public decimal? MaxAmount { get; set; }
 }

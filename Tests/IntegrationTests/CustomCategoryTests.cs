@@ -119,7 +119,7 @@ public class CustomCategoryTests : BaseTestFixture
         var category = await repository.FirstOrDefault(x => x.TeamId == User.TeamId && !x.IsDeleted, Ct);
         category.Should().NotBeNull();
         
-        const string newTitle = "new title";
+        const string newTitle = "new custom title";
         var token = await GetToken();
         
         //Act

@@ -8,7 +8,7 @@ export const reportsFeatureKey = 'reports';
 export interface State {
   simpleChart: SimpleChart | null;
   isLoading: boolean,
-  error: any,
+  error: any | null,
   optimizingChart: OptimizeBudgetResult | null
 }
 
@@ -44,6 +44,8 @@ export const reducer = createReducer(
   on(ReportsActions.optimizeBudget, (state, action) => ({
       ...state,
       isLoading: true,
+      error: null,
+      optimizingChart: null
     })
   ),
   on(ReportsActions.optimizeBudgetSuccess, (state, action) => ({

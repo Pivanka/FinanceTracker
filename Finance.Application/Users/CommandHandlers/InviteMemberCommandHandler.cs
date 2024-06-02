@@ -12,10 +12,10 @@ using Microsoft.Extensions.Configuration;
 
 namespace Finance.Application.Users.CommandHandlers;
 
-public record InviteMemberCommand(int UserId, string Email, string FirstName, string LastName, Role Role = Role.Viewer) : IRequest;
+public record InviteMemberCommand(int UserId, string Email, string? FirstName, string? LastName, Role Role = Role.Viewer) : IRequest;
 
 public class InviteMemberCommandHandler(
-    IUnitOfWork unitOfWork,
+    IUnitOfWork unitOfWork, 
     IEmailSender emailSender,
     IRazorViewToStringRenderer razorViewToStringRenderer,
     IConfiguration configuration,

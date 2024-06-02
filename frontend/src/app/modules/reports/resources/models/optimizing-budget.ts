@@ -15,11 +15,6 @@ export interface OptimizeBudgetRequest {
 export interface OptimizeRequestItem {
   categoryId?: number,
   customCategoryId?: number,
-  amount: number,
-  type: RequirementType
-}
-
-export enum RequirementType {
-  Min,
-  Max
+  maxAmount: number,
+  minAmount: number
 }

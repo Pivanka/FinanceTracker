@@ -43,7 +43,7 @@ public class EditCustomCategoryCommandValidator : AbstractValidator<EditCustomCa
                     .AnyAsync(c => c.Title == title, ct);
 
                 var titleExistsInCustomCategoryRepo = unitOfWork.CustomCategoryRepository.Query()
-                    .Where(c => c.Title == title && c.TeamId == command.TeamId).ToList().Count <= 1;
+                    .Where(c => c.Title == title && c.TeamId == command.TeamId).ToList().Count > 1;
 
                 return !titleExistsInCategoryRepo && !titleExistsInCustomCategoryRepo;
             })

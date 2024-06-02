@@ -55,13 +55,18 @@ export class IncomesReportsComponent implements OnInit {
     this.chart$ = this.store.select(selectChart);
   }
 
+
   getStartOfWeek() {
     const today = new Date();
-    const currentDay = today.getDay();
-    const startOfWeek = new Date(today);
-    startOfWeek.setDate(startOfWeek.getDate() - currentDay);
+    return this.getMonday(today);
+  }
 
-    return startOfWeek;
+  getMonday(d: Date): Date {
+    const date = new Date(d);
+    const day = date.getDay();
+    const diff = date.getDate() - day + (day === 0 ? -6 : 1);
+
+    return new Date(date.setDate(diff));
   }
   customDate!: { start?: Date, end?: Date };
   onDateChange(event: MatDatepickerInputEvent<Date>) {

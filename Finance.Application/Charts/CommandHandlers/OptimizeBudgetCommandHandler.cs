@@ -31,14 +31,19 @@ public class OptimizeBudgetCommandHandler(IUnitOfWork unitOfWork, IBudgetOptimiz
         var firstOfNextMonth = new DateTime(today.Year, today.Month, 1);
         var startDate = firstOfNextMonth.AddMonths(-monthsCount);
         var endDate = firstOfNextMonth.AddDays(-1);
+        
         var transactions = unitOfWork.TransactionRepository
             .Query()
             .Include(x => x.Account)
             .Include(x => x.Category)
             .Include(x => x.CustomCategory)
             .Where(x => x.Account!.TeamId == user.TeamId && x.Type == TransactionType.Expense)
-            .Where(t => t.Date >= startDate && t.Date <= endDate && (t.Category != null || t.CustomCategory != null));
-
+            .Where(t => t.Date >= startDate.ToUniversalTime() && t.Date <= endDate.ToUniversalTime() && (t.Category != null || t.CustomCategory != null));
+        if (!transactions.Any())
+        {
+            return new OptimizeBudgetResult();
+        }
+        
         var usualCategoriesTransactions = transactions.Where(x => x.Category != null);
         var customCategoryTransactions = transactions.Except(usualCategoriesTransactions);
 
@@ -66,21 +71,40 @@ public class OptimizeBudgetCommandHandler(IUnitOfWork unitOfWork, IBudgetOptimiz
                 .ToDictionary();
 
         var categories = await unitOfWork.CategoryRepository.GetAll(cancellationToken);
-        var customCategories = await unitOfWork.CustomCategoryRepository.GetAll(cancellationToken);
+        var customCategories = unitOfWork.CustomCategoryRepository
+            .Query()
+            .Where(x => x.TeamId == user.TeamId)
+            .ToList();
 
         var requirementItems = request.Items.Select(x => new RequirementItem
         {
-            Amount = x.Amount,
-            Type = x.Type,
+            MinAmount = x.MinAmount,
+            MaxAmount = x.MaxAmount,
             CategoryTitle = x.CategoryId is null
                 ? customCategories.First(c => c.Id == x.CustomCategoryId).Title
                 : categories.First(c => c.Id == x.CategoryId).Title
-        });
+        }).ToList();
 
-        var result = budgetOptimizer.Optimize(request.Budget,
-            groupedByCategoryTransactions.Keys.ToList(),
-            groupedByCategoryTransactions.Values.ToList(),
-            requirementItems.ToList());
+        var previousBudget = groupedByCategoryTransactions.Sum(x => x.Value);
+        var threshold = previousBudget * 0.03;
+        var keysToRemove = new List<string>();
+        const string keyOthers = "Others";
+        groupedByCategoryTransactions.TryAdd(keyOthers, 0);
+        
+        foreach (var item in groupedByCategoryTransactions.Where(x => x.Value < threshold 
+                                                                      && requirementItems.All(r => r.CategoryTitle != x.Key)))
+        {
+            groupedByCategoryTransactions[keyOthers] += item.Value;
+            keysToRemove.Add(item.Key);
+        }
+        foreach (var key in keysToRemove.Where(key => key != keyOthers))
+        {
+            groupedByCategoryTransactions.Remove(key);
+        }
+
+        var mapItems = MapItems(request.Budget, groupedByCategoryTransactions, requirementItems);
+        
+        var result = budgetOptimizer.Optimize(request.Budget, mapItems);
 
         return new OptimizeBudgetResult
         {
@@ -90,5 +114,48 @@ public class OptimizeBudgetCommandHandler(IUnitOfWork unitOfWork, IBudgetOptimiz
                 Amount = x.Value
             }).ToList()
         };
+    }
+    
+    private static List<CategoryInfo> MapItems(double budget, Dictionary<string, double> expenses, List<RequirementItem> items)
+    {
+        var mappedItems = new List<CategoryInfo>();
+
+        foreach (var expense in expenses) {
+            var item = items.FirstOrDefault(i => i.CategoryTitle == expense.Key);
+            var newItem = new CategoryInfo {
+                Title = expense.Key,
+                PreviousExpense = expense.Value
+            };
+
+            if (item != null) {
+                SetupLimits(budget, item, newItem);
+            } else {
+                DefaultLimits(budget, newItem);
+            }
+
+            mappedItems.Add(newItem);
+        }
+
+        foreach (var item in items.Where(i => !expenses.ContainsKey(i.CategoryTitle))) {
+            var newItem = new CategoryInfo {
+                Title = item.CategoryTitle,
+                PreviousExpense = 0 
+            };
+            SetupLimits(budget, item, newItem);
+            mappedItems.Add(newItem);
+        }
+
+        return mappedItems;
+    }
+
+    private static void SetupLimits(double budget, RequirementItem item, CategoryInfo newItem)
+    {
+        newItem.LowerLimit = item.MinAmount.HasValue ? (double)item.MinAmount : 0;
+        newItem.UpperLimit = item.MaxAmount > 0 ? (double)item.MaxAmount : budget;
+    }
+
+    private static void DefaultLimits(double budget, CategoryInfo newItem) {
+        newItem.LowerLimit = 0;
+        newItem.UpperLimit = budget;
     }
 }

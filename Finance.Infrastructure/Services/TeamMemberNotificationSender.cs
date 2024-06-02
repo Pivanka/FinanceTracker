@@ -5,20 +5,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Finance.Infrastructure.Services;
 
-public class TeamMemberNotificationSender : ITeamMemberNotificationSender
+public class TeamMemberNotificationSender(INotificationContext notificationContext, IUnitOfWork unitOfWork)
+    : ITeamMemberNotificationSender
 {
-    private readonly INotificationContext _notificationContext;
-    private readonly IRepository<Team> _teamRepository;
-
-    public TeamMemberNotificationSender(INotificationContext notificationContext, IRepository<Team> teamRepository)
-    {
-        _notificationContext = notificationContext;
-        _teamRepository = teamRepository;
-    }
-
     public async Task Send(int userId, int teamId, SignalRType type, CancellationToken cancellationToken)
     {
-        var team = await _teamRepository.Query()
+        var team = await unitOfWork.TeamRepository.Query()
             .Include(x => x.Users)
             .FirstAsync(x => x.Id == teamId, cancellationToken);
 
@@ -29,7 +21,7 @@ public class TeamMemberNotificationSender : ITeamMemberNotificationSender
                 continue;
             }
             
-            await _notificationContext.SendToUser(teamUser.Id, type);
+            await notificationContext.SendToUser(teamUser.Id, type);
         }
     }
 }
