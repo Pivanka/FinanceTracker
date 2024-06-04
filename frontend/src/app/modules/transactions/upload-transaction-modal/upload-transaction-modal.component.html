@@ -1,9 +1,13 @@
-<app-modal-container class="px-6" [minWidth]="'588px'">
+<app-modal-container class="px-6" [maxWidth]="'588px'">
   <app-modal-title text="Upload transactions"></app-modal-title>
+  <div class="text-grey-2 pt-4 pb-8">
+    Manage your finances more effectively by importing your transactions directly into application using a CSV file exported from Monobank.
+    This feature allows you to quickly and efficiently update your financial overview without the need to manually enter transaction details.
+  </div>
   <div class="flex flex-row justify-between w-full">
     <div class="cursor-pointer">
       <a class="ml-6 text-grey-3" (click)="uploadPhoto.click()">Upload file</a>
-      <input type="file" #uploadPhoto [hidden]="true" (change)="onFileChange($event)" accept="csv">
+      <input type="file" #uploadPhoto [hidden]="true" (change)="onFileChange($event)" accept=".csv">
     </div>
 
     <div class="flex flex-row cursor-pointer" (click)="remove()" *ngIf="form.controls.file.value">

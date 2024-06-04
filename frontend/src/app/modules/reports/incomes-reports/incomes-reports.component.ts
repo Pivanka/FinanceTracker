@@ -33,6 +33,11 @@ export class IncomesReportsComponent implements OnInit {
       to: new Date(),
       from: this.getStartOfWeek()
     };
+    this.selectedDate = {
+      to: this.currentWeek.to,
+      from: this.currentWeek.from,
+      title: "selected"
+    }
     this.dates = [
       {
         title: 'Current week',
@@ -93,6 +98,6 @@ export class IncomesReportsComponent implements OnInit {
 
   loadChartWithAccount(event: string){
     this.selectedAccount = event;
-    this.store.dispatch(loadChart({transactionType: TransactionType.Expense, to: this.selectedDate.to?.toISOString(), from: this.selectedDate.from?.toISOString(), accountId: this.selectedAccount}));
+    this.store.dispatch(loadChart({transactionType: TransactionType.Income, to: this.selectedDate.to?.toISOString(), from: this.selectedDate.from?.toISOString(), accountId: this.selectedAccount}));
   }
 }

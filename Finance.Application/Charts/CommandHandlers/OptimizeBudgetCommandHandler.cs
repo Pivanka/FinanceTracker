@@ -15,12 +15,16 @@ public class OptimizeBudgetCommand : IRequest<OptimizeBudgetResult>
     public ICollection<Item> Items { get; set; } = new List<Item>();
 }
 
-public class OptimizeBudgetCommandHandler(IUnitOfWork unitOfWork, IBudgetOptimizer budgetOptimizer)
+public class OptimizeBudgetCommandHandler(IUnitOfWork unitOfWork, IBudgetOptimizer budgetOptimizer,
+    IExchangeRateCalculator exchangeRateCalculator, ICurrencyService currencyService)
     : IRequestHandler<OptimizeBudgetCommand, OptimizeBudgetResult>
 {
     public async Task<OptimizeBudgetResult> Handle(OptimizeBudgetCommand request, CancellationToken cancellationToken)
     {
-        var user = await unitOfWork.UserRepository.FirstOrDefault(x => x.Id == request.UserId, cancellationToken);
+        var user = await unitOfWork.UserRepository
+            .Query()
+            .Include(x => x.Team)
+            .FirstOrDefaultAsync(x => x.Id == request.UserId, cancellationToken);
         if (user is null)
         {
             throw new NotFoundException();
@@ -44,15 +48,16 @@ public class OptimizeBudgetCommandHandler(IUnitOfWork unitOfWork, IBudgetOptimiz
             return new OptimizeBudgetResult();
         }
         
-        var usualCategoriesTransactions = transactions.Where(x => x.Category != null);
-        var customCategoryTransactions = transactions.Except(usualCategoriesTransactions);
+        var usualCategoriesTransactions = transactions.Where(x => x.Category != null).ToList();
+        var customCategoryTransactions = transactions.Where(x => x.CustomCategory != null).ToList();
 
+        var rates = await currencyService.GetCurrencyRates(cancellationToken);
         var groupedUsualCategoriesTransactions = usualCategoriesTransactions
             .GroupBy(t => t.Category)
             .Select(g => new 
             {
                 CategoryTitle = g.Key!.Title,
-                MonthlySpent = (double)(g.Sum(t => t.Amount) / monthsCount )
+                MonthlySpent = (double)(g.Sum(t => t.Amount * exchangeRateCalculator.Calculate(t.Currency, user.Team!.Currency, rates)) / monthsCount )
             })
             .ToDictionary(x => x.CategoryTitle, x => x.MonthlySpent);
         
@@ -61,7 +66,7 @@ public class OptimizeBudgetCommandHandler(IUnitOfWork unitOfWork, IBudgetOptimiz
             .Select(g => new 
             {
                 CategoryTitle = g.Key!.Title,
-                MonthlySpent = (double)(g.Sum(t => t.Amount) / monthsCount )
+                MonthlySpent = (double)(g.Sum(t => t.Amount * exchangeRateCalculator.Calculate(t.Currency, user.Team!.Currency, rates)) / monthsCount )
             })
             .ToDictionary(x => x.CategoryTitle, x => x.MonthlySpent);
 

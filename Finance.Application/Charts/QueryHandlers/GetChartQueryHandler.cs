@@ -30,6 +30,13 @@ public class GetChartQueryHandler(IUnitOfWork unitOfWork,
             .Include(x => x.CustomCategory)
             .Where(x => x.Type == request.Type);
 
+        Account? account = default;
+        if (!string.IsNullOrEmpty(request.AccountId))
+        {
+            account = await unitOfWork.AccountRepository.FirstOrDefault(x => x.Id == Convert.ToInt32(request.AccountId),
+                cancellationToken);
+        }
+
         if (request.From is not null)
         {
             transactionsQuery = transactionsQuery.Where(x => x.Date > DateTime.Parse(request.From).ToUniversalTime());
@@ -39,9 +46,9 @@ public class GetChartQueryHandler(IUnitOfWork unitOfWork,
             transactionsQuery = transactionsQuery.Where(x => x.Date <= DateTime.Parse(request.To).ToUniversalTime());
         }
         
-        if (!string.IsNullOrEmpty(request.AccountId))
+        if (account is not null)
         {
-            transactionsQuery = transactionsQuery.Where(x => x.AccountId == Convert.ToInt32(request.AccountId));
+            transactionsQuery = transactionsQuery.Where(x => x.AccountId == account.Id);
         }
         
         var transactions = await transactionsQuery.ToListAsync(cancellationToken);
@@ -55,7 +62,9 @@ public class GetChartQueryHandler(IUnitOfWork unitOfWork,
             .Select(x => new Value
             {
                 CategoryTitle = x.Category!.Title,
-                Amount = x.Transactions.Sum(t => t.Amount * exchangeRateCalculator.Calculate(user.Team!.Currency, t.Currency, rates)),
+                Amount = x.Transactions.Sum(t => account is null ?
+                    t.Amount * exchangeRateCalculator.Calculate(user.Team!.Currency, t.Currency, rates) :
+                    t.Amount * t.ExchangeRate),
                 Color = x.Category.Color
             });
 
@@ -67,12 +76,14 @@ public class GetChartQueryHandler(IUnitOfWork unitOfWork,
             .Select(x => new Value
             {
                 CategoryTitle = x.CustomCategory!.Title,
-                Amount = x.Transactions.Sum(t => t.Amount),
+                Amount = x.Transactions.Sum(t => account is null ?
+                    t.Amount * exchangeRateCalculator.Calculate(user.Team!.Currency, t.Currency, rates) :
+                    t.Amount * t.ExchangeRate),
                 Color = x.CustomCategory.Color
             });
 
         var combinedResults = groupedByCategory.Concat(groupedByCustomCategory);
 
-        return new SimpleChart { Values = combinedResults, Currency = user.Team!.Currency };
+        return new SimpleChart { Values = combinedResults, Currency = account is not null ? account.Currency : user.Team!.Currency };
     }
 }

@@ -15,6 +15,7 @@ public record RegisterUserCommand : IRequest<AuthResponse>
     public string? LastName { get; set; }
     public string Email { get; set; } = null!;
     public string Password { get; set; } = null!;
+    public string Currency { get; set; } = null!;
 }
 
 public class RegisterUserCommandHandler(
@@ -27,6 +28,13 @@ public class RegisterUserCommandHandler(
     {
         using var hmac = new HMACSHA512();
 
+        var team = new Team
+        {
+            Currency = request.Currency
+        };
+        await unitOfWork.TeamRepository.Add(team, cancellationToken);
+        await unitOfWork.SaveChanges(cancellationToken);
+
         var userToRegister = new User
         {
             Email = request.Email,
@@ -34,27 +42,27 @@ public class RegisterUserCommandHandler(
             LastName = request.LastName,
             PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(request.Password)),
             PasswordSalt = hmac.Key,
-            Team = new Team(),
-            Role = Role.Admin
+            TeamId = team.Id,
+            Role = Role.Admin,
         };
 
-        var registeredUser = await unitOfWork.UserRepository.Add(userToRegister, cancellationToken);
+        await unitOfWork.UserRepository.Add(userToRegister, cancellationToken);
         await unitOfWork.SaveChanges(cancellationToken);
 
         var account = new Account
         {
-            TeamId = registeredUser.TeamId,
+            TeamId = userToRegister.TeamId,
             Title = "Default",
         };
         await unitOfWork.AccountRepository.Add(account, cancellationToken);
         await unitOfWork.SaveChanges(cancellationToken);
         
-        var token = tokenGenerator.Generate(registeredUser);
+        var token = tokenGenerator.Generate(userToRegister);
 
-        registeredUser.RefreshToken = token.RefreshToken;
-        registeredUser.RefreshTokenExpiry = DateTime.UtcNow.AddSeconds(settings.RefreshTokenExpireSeconds);
+        userToRegister.RefreshToken = token.RefreshToken;
+        userToRegister.RefreshTokenExpiry = DateTime.UtcNow.AddSeconds(settings.RefreshTokenExpireSeconds);
 
-        await unitOfWork.UserRepository.Update(registeredUser, cancellationToken);
+        await unitOfWork.UserRepository.Update(userToRegister, cancellationToken);
         await unitOfWork.SaveChanges(cancellationToken);
 
         return token;

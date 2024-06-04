@@ -1,6 +1,6 @@
 <div class="registration-page">
   <app-about-us></app-about-us>
-  <div class="outlet-container">
+  <div class="outlet-container flex-col">
     <app-form-container>
       <h1>Registration</h1>
       <div class="input-row">
@@ -22,6 +22,15 @@
          </ng-container>
       </div>
       <div class="input-row">
+          <p>Currency</p>
+          <app-dropdown [formControl]="getFormControl('currency')"
+            [items]="['UAH', 'USD', 'EUR']" [defaultValue]="defaultCurrency"></app-dropdown>
+          <app-generic-error-message [control]="form.controls['currency']"></app-generic-error-message>
+          <ng-container *ngIf="(errors$ | async) as serverErrors">
+            <app-generic-error-message *ngIf="form?.valid && serverErrors['Currency']" [message]="serverErrors['Currency'][0]"></app-generic-error-message>
+          </ng-container>
+      </div>
+      <div class="input-row">
           <p>Create password</p>
           <app-input type="password" placeholder="Create password" [control]="getFormControl('password')"></app-input>
           <app-generic-error-message [control]="form.controls['password']"></app-generic-error-message>
@@ -34,9 +43,6 @@
               Password must be at least 8 characters long
           </li>
           <li>
-              English keyboard type
-          </li>
-          <li>
               Uppercase and lowercase letters
           </li>
           <li>
@@ -44,10 +50,10 @@
           </li>
       </ul>
       <app-button class="w-full my-8" [config]="submitCfg"></app-button>
-      <p class="login-suggestion">
-          <span>Already have an account?</span>
-          <a href="/login">Login</a>
-      </p>
-  </app-form-container>
+    </app-form-container>
+    <p class="login-suggestion">
+        <span>Already have an account?</span>
+        <a href="/login">Login</a>
+    </p>
   </div>
 </div>

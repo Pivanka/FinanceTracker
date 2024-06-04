@@ -53,6 +53,7 @@ public class AuthTests : BaseTestFixture
             Password = "TestStrong12!",
             FirstName = "Test",
             LastName = "Test",
+            Currency = "UAH"
         };
 
         //Act
@@ -82,6 +83,7 @@ public class AuthTests : BaseTestFixture
             Password = "Test12!",
             FirstName = "Test",
             LastName = "Test",
+            Currency = "UAH"
         };
 
         //Act

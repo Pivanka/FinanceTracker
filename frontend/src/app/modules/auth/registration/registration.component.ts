@@ -20,10 +20,12 @@ interface CustomValidatorConfig {
 })
 export class RegistrationComponent implements OnInit {
 
+  defaultCurrency = 'UAH';
   form: FormGroup = new FormGroup({
     'firstName': new FormControl('', [Validators.minLength(2), Validators.maxLength(75)]),
     'email': new FormControl('', [Validators.required, Validators.email]),
     'lastName': new FormControl('', [Validators.minLength(2), Validators.maxLength(75)]),
+    'currency': new FormControl(this.defaultCurrency, [Validators.required]),
     'password': new FormControl('', [Validators.required,
     this.customPatternValidator({ pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/, msg: "Weak password" })]),
   });
@@ -43,6 +45,7 @@ export class RegistrationComponent implements OnInit {
       email: this.form.controls['email'].value,
       lastName: this.form.controls['lastName'].value,
       password: this.form.controls['password'].value,
+      currency: this.form.controls['currency'].value
     };
 
     this.store.dispatch(register({ request: result }));

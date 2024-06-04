@@ -222,7 +222,8 @@ public class UserTests : BaseTestFixture
             Email = "test@change.password",
             FirstName = "test",
             LastName = "test",
-            Password = "PassToChange1!"
+            Password = "PassToChange1!",
+            Currency = "UAH"
         };
         await mediator.Send(registerCommand);
 
