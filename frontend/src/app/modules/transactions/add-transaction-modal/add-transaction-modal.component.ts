@@ -10,7 +10,7 @@ import { addTransaction, calculateAmount } from '../resources/state/transactions
 import { Observable, Subscription } from 'rxjs';
 import { selectAccounts, selectAmount, selectCurrencies, showCategoriesSelector, showCustomCategoriesSelector } from '../resources/state/transactions.selector';
 import { CalculateRateRequest, CalculatedAmount, CurrencyModel } from '../resources/models/currency';
-import { CategoryDropdownComponent } from './category-dropdown/category-dropdown.component';
+import { CategoryDropdownComponent } from '../../../shared/category-dropdown/category-dropdown.component';
 import { AppState } from '../../../store';
 
 export interface AddTransaction{

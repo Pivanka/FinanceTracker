@@ -8,7 +8,6 @@ import { TransactionsComponent } from './transactions.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { AddTransactionModalComponent } from './add-transaction-modal/add-transaction-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CategoryDropdownComponent } from './add-transaction-modal/category-dropdown/category-dropdown.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import * as TransactionsReducer from './resources/state/transactions.reducer';
@@ -58,7 +57,6 @@ const routes: Routes = [
     TransactionsTableWrapperComponent,
     AllAccountsDropdownComponent,
     AddTransactionModalComponent,
-    CategoryDropdownComponent,
     EditTransactionModalComponent,
     AllAccountsDropdownComponent,
     IncomesComponent,
@@ -66,9 +64,6 @@ const routes: Routes = [
     TransactionsTableComponent,
     UploadTransactionModalComponent,
     UploadTransactionsConfirmModalComponent,
-  ],
-  exports: [
-    CategoryDropdownComponent
   ],
   bootstrap: [TransactionsComponent],
 })

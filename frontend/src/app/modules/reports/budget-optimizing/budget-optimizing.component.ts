@@ -114,7 +114,6 @@ Math: any;
       items: resultItems
     }
 
-    console.log(result)
     this.store.dispatch(optimizeBudget({ request: result }));
   }
 }

@@ -25,7 +25,6 @@ export class SimpleChartExampleComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    console.log('recalculate')
     this.updateChartData();
   }
 

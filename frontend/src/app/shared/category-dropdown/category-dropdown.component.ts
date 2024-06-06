@@ -1,11 +1,11 @@
 import { AfterContentInit, Component, EventEmitter, Input, OnInit, Output, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { Category, CustomCategory } from '../../resources/models/category';
+import { Category, CustomCategory } from '../../modules/transactions/resources/models/category';
 import { Store, select } from '@ngrx/store';
-import { showCategoriesSelector, showCustomCategoriesSelector } from '../../resources/state/transactions.selector';
-import { AppState } from '../../../../store';
-import { TransactionType } from '../../../dashboard/resources/models/transaction';
+import { showCategoriesSelector, showCustomCategoriesSelector } from '../../modules/transactions/resources/state/transactions.selector';
+import { AppState } from '../../store';
+import { TransactionType } from '../../modules/dashboard/resources/models/transaction';
 
 @Component({
   selector: 'app-category-dropdown',

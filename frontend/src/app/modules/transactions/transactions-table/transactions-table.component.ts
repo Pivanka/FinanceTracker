@@ -12,7 +12,7 @@ import { Sort } from '../../../shared/models/query-params';
 import { AppState } from '../../../store';
 import { isSpinnerShowing } from '../../../store/selectors/spinner.selectors';
 import { RowEvent, TableHeaderCell, TableHeaderCellType, TableRowCellType } from '../../../shared/table/table.models';
-import { openAddTransactonModal, openEditTransactionModal } from '../../../store/actions/modal.actions';
+import { openAddTransactonModal, openEditTransactionModal, openUploadTransactonModal } from '../../../store/actions/modal.actions';
 import { selectRole } from '../../settings/resources/state/settings.selector';
 import { Role } from '../../auth/resources/models/role';
 
@@ -41,7 +41,7 @@ export class TransactionsTableComponent implements OnInit {
   };
   secondaryButton: ButtonConfig = {
     text: 'Upload',
-    onClick: () => alert("Click")
+    onClick: () => this.store.dispatch(openUploadTransactonModal())
   };
   hasAccess$!: Observable<boolean | null>;
 

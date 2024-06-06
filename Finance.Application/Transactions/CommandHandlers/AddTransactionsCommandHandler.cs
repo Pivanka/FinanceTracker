@@ -47,7 +47,7 @@ public class AddTransactionsCommandHandler(IUnitOfWork unitOfWork, ITeamMemberNo
 
             if (transaction.CategoryId is null && transaction.CustomCategoryId is null)
             {
-                transaction.CategoryId = transaction.Type is TransactionType.Income ? 18 : 19;
+                transaction.CategoryId = transaction.Type is TransactionType.Income ? 19 : 18;
             }
 
             return transaction;

@@ -24,15 +24,15 @@ import { AccountDropdownComponent } from './account-dropdown/account-dropdown.co
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'income',
+    redirectTo: 'income-report',
     pathMatch: 'full'
   },
   {
     path: '',
     component: ReportsComponent,
     children: [
-      { path: 'income', component: IncomesReportsComponent },
-      { path: 'expense', component: ExpencesReportsComponent },
+      { path: 'income-report', component: IncomesReportsComponent },
+      { path: 'expense-report', component: ExpencesReportsComponent },
       { path: 'optimizing', component: BudgetOptimizingComponent },
     ],
   },
@@ -54,8 +54,7 @@ const routes: Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
-    ReactiveFormsModule,
-    TransactionsModule
+    ReactiveFormsModule
   ],
   declarations: [
     ReportsComponent,

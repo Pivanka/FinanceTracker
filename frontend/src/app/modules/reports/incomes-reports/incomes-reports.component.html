@@ -1,5 +1,5 @@
-<div class="w-full flex flex-row justify-between items-center">
-  <div class="w-90" *ngIf="(chart$ | async) as vm; else loading">
+<div class="w-full flex flex-row justify-around items-center">
+  <div class="w-96" *ngIf="(chart$ | async) as vm; else loading">
     <app-empty-state [message]="'There is no one transaction. Choose another period.'" *ngIf="!vm.values.length"></app-empty-state>
     <app-simple-chart-example
       *ngIf="vm.values.length"
@@ -13,7 +13,7 @@
       <app-date-item [model]="item" class="w-full cursor-pointer" (click)="onClick(item)"></app-date-item>
     </div>
 
-    <div class="w-full flex flex-col cursor-pointer p-4 payment-method">
+    <div class="w-full flex flex-col cursor-pointer p-4 item">
       <span class="main-info">Custom</span>
       <div class="flex items-center">
         <mat-date-range-input [rangePicker]="picker" disabled [formGroup]="range">

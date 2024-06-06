@@ -34,6 +34,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { EnumPipe } from './pipes/enum.pipe';
 import { FailedModalRedirectComponent } from './modal/failed-modal-redirect/failed-modal-redirect.component';
 import { ModalFailedComponent } from './modal/modal-failed/modal-failed.component';
+import { CategoryDropdownComponent } from './category-dropdown/category-dropdown.component';
 
 @NgModule({
   imports: [
@@ -77,6 +78,7 @@ import { ModalFailedComponent } from './modal/modal-failed/modal-failed.componen
     EnumPipe,
     ModalFailedComponent,
     FailedModalRedirectComponent,
+    CategoryDropdownComponent
   ],
   exports: [
     HeaderComponent,
@@ -108,6 +110,7 @@ import { ModalFailedComponent } from './modal/modal-failed/modal-failed.componen
     EnumPipe,
     ModalFailedComponent,
     FailedModalRedirectComponent,
+    CategoryDropdownComponent
   ]
 })
 export class SharedModule { }
