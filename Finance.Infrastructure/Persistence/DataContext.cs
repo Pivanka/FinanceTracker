@@ -18,6 +18,27 @@ public class DataContext(DbContextOptions<DataContext> options) : DbContext(opti
         base.OnModelCreating(modelBuilder);
         
         modelBuilder.Entity<CustomCategory>()
-            .HasIndex(b => new { b.IsDeleted });
+            .HasIndex(b => new { b.IsDeleted, b.Title });
+
+        modelBuilder.Entity<User>()
+            .HasIndex(x => new { x.Email });
+
+        modelBuilder.Entity<Account>()
+            .HasIndex(x => new { x.Title, x.IsDeleted });
+
+        modelBuilder.Entity<Team>()
+            .HasIndex(x => new { x.Currency });
+
+        modelBuilder.Entity<Transaction>()
+            .HasIndex(x => new { x.Amount, x.Currency, x.Date, x.Type });
+
+        modelBuilder.Entity<Transaction>()
+            .HasIndex(x => new { x.Amount, x.Currency, x.Date, x.Type });
+
+        modelBuilder.Entity<Notification>()
+            .HasIndex(x => new { x.CreatedDate, x.Message, x.IsRead  });
+
+        modelBuilder.Entity<Category>()
+            .HasIndex(x => new { x.Title });
     }
 }
