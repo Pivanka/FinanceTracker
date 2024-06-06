@@ -1,6 +1,6 @@
 <div class="w-full flex flex-row justify-between items-center">
   <div>
-    <div *ngIf="!(isLoading$ | async) && (chart$ | async) as vm">
+    <div class="w-96" *ngIf="!(isLoading$ | async) && (chart$ | async) as vm">
       <app-empty-state [message]="'There is no one transaction. Choose another period.'" *ngIf="!vm.values.length"></app-empty-state>
       <app-simple-chart-example
         *ngIf="vm.values.length"

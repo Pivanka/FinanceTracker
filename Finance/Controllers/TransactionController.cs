@@ -32,7 +32,8 @@ public class TransactionController(IMediator mediator) : BaseController
             Currency = model.Currency,
             Note = model.Note,
             Type = model.Type,
-            ExchangeRate = model.ExchangeRate
+            ExchangeRate = model.ExchangeRate,
+            Date = model.Date
         }, cancellationToken));
     }
     

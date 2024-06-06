@@ -1,4 +1,4 @@
-<div class="flex justify-between items-center border-b border-b-[#E5E8EC] pb-2">
+<div class="flex justify-between border-b border-b-[#E5E8EC] pb-2">
   <div class="flex w-auto my-1">
     <div *ngIf="!member.invited" class="preview mr-4 w-14 h-14 rounded-full">
       <div [style.background-image]='selectImage(member.icon)'> </div>
@@ -7,7 +7,7 @@
       class="mr-6" />
     <div>
       <h3 class="text-base text-[#454950]">{{ member.firstName }} {{ member.lastName }}</h3>
-      <p class="text-sm text-[#AFB4BD] mt-1">{{ member.email }}</p>
+      <p class="text-xs text-[#AFB4BD] mt-1">{{ member.email }}</p>
     </div>
   </div>
 
@@ -37,7 +37,7 @@
       </div>
     </div>
     <div *ngIf="member.invited && (hasAccess$ | async)" class="resend-email">
-      <a class="cursor-pointer text-[#0D99FF] underline" (click)="ResendEmail()">Resend invitation link</a>
+      <a class="text-xs cursor-pointer text-[#0D99FF] underline" (click)="ResendEmail()">Resend invitation link</a>
     </div>
   </div>
 </div>

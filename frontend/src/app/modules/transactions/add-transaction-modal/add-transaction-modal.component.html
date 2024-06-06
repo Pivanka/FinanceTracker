@@ -35,13 +35,19 @@
       <p class="text">Notes</p>
       <app-input placeholder="Type additional notes here" [control]="getFormControl('notes')"></app-input>
     </div>
-    <div class="mb-4" *ngIf="accounts$ | async as vm">
-      <p class="text">Account</p>
-      <app-dropdown class="w-20"
-        [formControl]="getFormControl('account')"
-        [items]="vm"
-        [defaultValue]="vm[0]"
-        (itemSelected)="selectAccount($event)"></app-dropdown>
+    <div class="mb-4 flex flex-row justify-between">
+      <div class="mr-4 w-80">
+        <p class="text">Date</p>
+        <app-input [type]="'date'" [control]="getFormControl('date')"></app-input>
+      </div>
+      <div class="w-full" *ngIf="accounts$ | async as vm">
+        <p class="text">Account</p>
+        <app-dropdown class="w-20"
+          [formControl]="getFormControl('account')"
+          [items]="vm"
+          [defaultValue]="vm[0]"
+          (itemSelected)="selectAccount($event)"></app-dropdown>
+      </div>
     </div>
   </div>
   <app-modal-actions-container>

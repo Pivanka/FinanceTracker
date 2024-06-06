@@ -49,7 +49,8 @@ public class AddTransactionCommandHandler(IUnitOfWork unitOfWork,
             Currency = request.Currency,
             Note = request.Note,
             Type = request.Type,
-            ExchangeRate = 1
+            ExchangeRate = 1,
+            Date = request.Date?.ToUniversalTime() ?? DateTime.UtcNow
         };
 
         if (account.Currency != request.Currency)

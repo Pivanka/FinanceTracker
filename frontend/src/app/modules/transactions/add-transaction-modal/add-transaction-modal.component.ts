@@ -54,6 +54,7 @@ export class AddTransactionModalComponent implements OnInit, OnDestroy {
       currency: new FormControl('', [Validators.required]),
       category: new FormControl('', [Validators.required]),
       account: new FormControl('', [Validators.required]),
+      date: new FormControl(null),
     });
     this.getCategories(this.transactionType?.value);
   }
@@ -69,7 +70,8 @@ export class AddTransactionModalComponent implements OnInit, OnDestroy {
       amount: this.transactionForm.controls['amount'].value,
       currency: this.transactionForm.controls['currency'].value.currency,
       accountId: this.transactionForm.controls['account'].value.id,
-      exchangeRate: 1
+      exchangeRate: 1,
+      date: this.transactionForm.controls['date'].value
     };
 
     if(this.transactionForm.controls['category'].value.teamId > 0) {
